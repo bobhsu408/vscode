@@ -1,0 +1,30 @@
+# 講義網站 vscode.bobhsu.com
+#
+#   docker compose up -d --build
+#
+# 需要 .env 提供 CLOUDFLARE_TUNNEL_TOKEN（見 .env.example）
+services:
+  site:
+    build: .
+    container_name: vscode_course_site
+    restart: unless-stopped
+    ports:
+      - "8210:80"        # 本機預覽用，tunnel 接上後可拿掉
+    networks:
+      - vscode_site_net
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: vscode_course_cloudflared
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    env_file:
+      - .env
+    depends_on:
+      - site
+    networks:
+      - vscode_site_net
+
+networks:
+  vscode_site_net:
+    driver: bridge

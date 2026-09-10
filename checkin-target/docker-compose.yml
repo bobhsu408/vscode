@@ -1,6 +1,32 @@
+# 簽到靶機 test.bobhsu.com
+#
+#   docker compose up -d --build
+#
+# 對外部署需要 .env 提供 CLOUDFLARE_TUNNEL_TOKEN（見 .env.example）。
+# 本機教學只想跑靶機、不對外時，可用：
+#   docker compose up --build checkin-target
 services:
   checkin-target:
     build: .
+    container_name: checkin_target
+    restart: unless-stopped
     ports:
       - "8000:8000"
+    networks:
+      - checkin_net
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: checkin_target_cloudflared
     restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    env_file:
+      - .env
+    depends_on:
+      - checkin-target
+    networks:
+      - checkin_net
+
+networks:
+  checkin_net:
+    driver: bridge

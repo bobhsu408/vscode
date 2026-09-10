@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VS Code 入門三小時</title>
+<style>
+:root{
+  --ink:#1e1e2e;
+  --paper:#f7f6f3;
+  --paper-raised:#ffffff;
+  --steel:#3d5a80;
+  --steel-soft:#e8eef4;
+  --amber:#c8863a;
+  --amber-soft:#f6e9d8;
+  --green:#2d6a4f;
+  --green-soft:#e3efe8;
+  --grey:#6b7280;
+  --line:#e0ddd6;
+  --code-bg:#1e1e2e;
+  --code-fg:#d4d4dc;
+  --code-accent:#7fb0d9;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#ece9e4;
+    --paper:#15151c;
+    --paper-raised:#1e1e28;
+    --steel:#8fb4d9;
+    --steel-soft:#25303d;
+    --amber:#e0a458;
+    --amber-soft:#3a2f1e;
+    --green:#7fc9a4;
+    --green-soft:#1e3128;
+    --grey:#9a9aa5;
+    --line:#33333f;
+    --code-bg:#0f0f16;
+    --code-fg:#d4d4dc;
+    --code-accent:#7fb0d9;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#ece9e4;
+  --paper:#15151c;
+  --paper-raised:#1e1e28;
+  --steel:#8fb4d9;
+  --steel-soft:#25303d;
+  --amber:#e0a458;
+  --amber-soft:#3a2f1e;
+  --green:#7fc9a4;
+  --green-soft:#1e3128;
+  --grey:#9a9aa5;
+  --line:#33333f;
+  --code-bg:#0f0f16;
+  --code-fg:#d4d4dc;
+  --code-accent:#7fb0d9;
+}
+
+*{box-sizing:border-box;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans","Noto Sans TC",sans-serif;
+  margin:0;
+  line-height:1.6;
+}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px;}
+
+/* ---------- Cover ---------- */
+.cover{
+  padding:72px 0 48px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:56px;
+}
+.cover .eyebrow{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  letter-spacing:.08em;
+  color:var(--steel);
+  text-transform:uppercase;
+  margin:0 0 18px;
+}
+.cover h1{
+  font-family:"Fraunces",serif;
+  font-size:clamp(36px,5vw,58px);
+  font-weight:600;
+  margin:0 0 16px;
+  text-wrap:balance;
+  letter-spacing:-.01em;
+}
+.cover .sub{
+  font-size:18px;
+  color:var(--grey);
+  max-width:640px;
+  margin:0 0 28px;
+}
+.cover-meta{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  color:var(--steel);
+}
+.cover-meta span b{
+  display:block;
+  font-family:"IBM Plex Sans","Noto Sans TC",sans-serif;
+  color:var(--ink);
+  font-size:15px;
+  font-weight:600;
+  margin-top:2px;
+}
+
+/* ---------- Section titles ---------- */
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+  margin:0 0 28px;
+}
+.section-head .tag{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  color:var(--paper-raised);
+  background:var(--steel);
+  padding:4px 10px;
+  border-radius:4px;
+  letter-spacing:.04em;
+  white-space:nowrap;
+}
+.section-head h2{
+  font-family:"Fraunces",serif;
+  font-size:28px;
+  font-weight:600;
+  margin:0;
+  text-wrap:balance;
+}
+
+/* ---------- Timeline layout ---------- */
+.timeline{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:0 28px;
+}
+.module{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:0 28px;
+  position:relative;
+  padding-bottom:52px;
+}
+.module::before{
+  content:"";
+  position:absolute;
+  left:150px;
+  top:6px;
+  bottom:-2px;
+  width:1px;
+  background:var(--line);
+}
+.module:last-child::before{display:none;}
+.module .time{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  color:var(--steel);
+  padding-top:4px;
+  text-align:right;
+  position:relative;
+}
+.module .time::after{
+  content:"";
+  position:absolute;
+  right:-33px;
+  top:8px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--steel);
+  border:2px solid var(--paper);
+}
+.module .body{padding-left:28px;}
+.module h3{
+  font-family:"Fraunces",serif;
+  font-size:21px;
+  font-weight:600;
+  margin:0 0 6px;
+}
+.module .dur{
+  display:inline-block;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;
+  color:var(--grey);
+  margin-bottom:12px;
+}
+.module p{margin:0 0 12px;color:var(--ink);}
+.module ul{margin:0 0 12px;padding-left:20px;}
+.module li{margin-bottom:6px;}
+
+.break-row{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:0 28px;
+  padding-bottom:36px;
+}
+.break-row .time{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  color:var(--amber);
+  text-align:right;
+}
+.break-row .body{
+  padding-left:28px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  color:var(--amber);
+  border-left:2px dashed var(--amber);
+  padding:2px 0 2px 26px;
+}
+
+/* ---------- callouts ---------- */
+.callout{
+  background:var(--steel-soft);
+  border-left:3px solid var(--steel);
+  border-radius:6px;
+  padding:14px 16px;
+  margin:12px 0;
+  font-size:14.5px;
+}
+.callout.warn{background:var(--amber-soft);border-left-color:var(--amber);}
+.callout.tip{background:var(--green-soft);border-left-color:var(--green);}
+.callout .label{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:4px;
+  opacity:.8;
+}
+
+/* ---------- code blocks ---------- */
+.code{
+  background:var(--code-bg);
+  color:var(--code-fg);
+  border-radius:8px;
+  padding:14px 16px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  overflow-x:auto;
+  margin:12px 0;
+  line-height:1.55;
+}
+.code .chrome{
+  display:flex;
+  gap:6px;
+  margin-bottom:10px;
+}
+.code .chrome span{
+  width:9px;height:9px;border-radius:50%;
+  background:#5a5a68;
+}
+.code .c1{background:#e0685f;}
+.code .c2{background:#e0b25f;}
+.code .c3{background:#5fbf7a;}
+.code .kw{color:var(--code-accent);}
+.code .cm{color:#8a8a99;}
+.code .str{color:#c9a26b;}
+
+/* ---------- keycap ---------- */
+kbd{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  border-bottom-width:2px;
+  border-radius:5px;
+  padding:2px 7px;
+  color:var(--ink);
+}
+
+/* ---------- shortcut grid ---------- */
+.kbd-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:10px;
+  margin:16px 0;
+}
+.kbd-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 12px;
+  font-size:13.5px;
+}
+
+/* ---------- vuln box ---------- */
+.vuln-box{
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  margin:16px 0;
+  background:var(--paper-raised);
+}
+.vuln-box .vb-head{
+  padding:10px 14px;
+  background:var(--amber-soft);
+  color:var(--amber);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.03em;
+  border-bottom:1px solid var(--line);
+}
+.vuln-box .vb-body{padding:14px 16px;}
+
+/* ---------- request table ---------- */
+.reqtable{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13.5px;
+  margin:14px 0;
+}
+.reqtable th,.reqtable td{
+  border:1px solid var(--line);
+  padding:8px 10px;
+  text-align:left;
+  vertical-align:top;
+}
+.reqtable th{
+  background:var(--steel-soft);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;
+  color:var(--steel);
+  font-weight:600;
+  letter-spacing:.03em;
+}
+.reqtable code{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px;
+  background:var(--steel-soft);
+  padding:1px 5px;
+  border-radius:4px;
+}
+
+/* ---------- checklist ---------- */
+.checklist{
+  list-style:none;
+  margin:14px 0;
+  padding:0;
+  display:grid;
+  gap:8px;
+}
+.checklist li{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  font-size:14px;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 12px;
+}
+.checklist li::before{
+  content:"";
+  flex:0 0 16px;
+  width:16px;height:16px;
+  border-radius:4px;
+  border:1.5px solid var(--steel);
+  margin-top:2px;
+}
+
+/* ---------- footer nav ---------- */
+.divider{
+  height:1px;
+  background:var(--line);
+  margin:56px 0 40px;
+}
+.legend{
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+  font-size:12.5px;
+  color:var(--grey);
+  font-family:"IBM Plex Mono",monospace;
+  margin-top:40px;
+}
+.legend b{color:var(--ink);}
+
+@media (max-width:640px){
+  .module,.break-row{grid-template-columns:1fr;}
+  .module::before{display:none;}
+  .module .time{text-align:left;padding-top:0;margin-bottom:4px;}
+  .module .body,.break-row .body{padding-left:0;border-left:none;}
+  .cover{padding:48px 0 32px;}
+}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="cover">
+    <p class="eyebrow">課程教案 · 逐時段講義</p>
+    <h1>VS Code 入門三小時</h1>
+    <p class="sub">從零安裝到能寫、能跑、能用終端機與 Git 的基本工作流。適合完全沒寫過程式的學員，全程以「先操作、再解釋」為主——安裝後先動手開檔案、換主題，累積成就感後才進入介面理論。</p>
+    <div class="cover-meta">
+      <span>時長<b>3 小時（含休息）</b></span>
+      <span>對象<b>有基礎電腦操作，未寫過程式</b></span>
+      <span>環境<b>自架授權簽到靶機 + Python</b></span>
+      <span>形式<b>投影 + 現場跟做</b></span>
+    </div>
+    <p class="downloads" style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="/vscode-course.pptx" download style="display:inline-block;padding:8px 16px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:600;">⬇ 投影片 (.pptx)</a>
+      <a href="/vscode-course-notes.md" download style="display:inline-block;padding:8px 16px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:600;">⬇ 講師教案筆記 (.md)</a>
+    </p>
+  </div>
+
+  <!-- ================= MODULE 1 ================= -->
+  <div class="section-head">
+    <span class="tag">00:00–00:20</span>
+    <h2>安裝與初次啟動</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="module">
+      <div class="time">00:00</div>
+      <div class="body">
+        <h3>下載與安裝</h3>
+        <span class="dur">約 15 分鐘</span>
+        <p>前往官方網站下載對應作業系統版本（Windows / macOS）。強調：這是「編輯器」不是「作業系統」，也不是瀏覽器。</p>
+        <ul>
+          <li>Windows：下載 <code>.exe</code>，安裝時建議勾選「加入右鍵選單」「加入 PATH」</li>
+          <li>macOS：下載 <code>.zip</code>，解壓縮後拖入應用程式資料夾</li>
+          <li>常見卡點：學校/公司電腦沒有系統管理員權限 → 使用者層級安裝版</li>
+        </ul>
+        <div class="callout tip">
+          <span class="label">現場提示</span>
+          安裝過程請學員全程跟做，不要用投影帶過——這一步最容易個別卡住，寧可多留時間巡場。
+        </div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">00:15</div>
+      <div class="body">
+        <h3>初次啟動一覽</h3>
+        <span class="dur">約 5 分鐘</span>
+        <p>開啟後先讓學員看一眼畫面即可，不深入解釋——語言暫時保持英文，介面認識與中文化留到後面模組再處理。先示範一次 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>（Mac 為 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>）開啟命令面板，讓學員有印象即可。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= MODULE 2 ================= -->
+  <div class="section-head">
+    <span class="tag">00:20–00:45</span>
+    <h2>檔案與專案管理：實際打開文件</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="module">
+      <div class="time">00:20</div>
+      <div class="body">
+        <h3>「開啟資料夾」＝ VS Code 裡的「專案」</h3>
+        <span class="dur">約 10 分鐘</span>
+        <p>這是本模組最重要的觀念：VS Code 沒有「新建專案」按鈕，一個資料夾就是一個專案。直接用學員自己的下載資料夾練習，比新建空資料夾更有感。</p>
+        <ul>
+          <li>File → Open Folder，選取「下載」資料夾（課程講義 PPT / 文件已預先放在裡面）</li>
+          <li>左側 Explorer 會顯示該資料夾內容——第一次看到「一堆檔案變成可操作的樹狀清單」</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">00:30</div>
+      <div class="body">
+        <h3>用 Office 擴充套件直接在 VS Code 裡看 PPT / Word</h3>
+        <span class="dur">約 15 分鐘</span>
+        <p>安裝 Office Viewer 類擴充套件（Extensions 面板搜尋安裝），在編輯區直接點開下載資料夾裡的 <code>.pptx</code> / <code>.docx</code> 檔案。</p>
+        <ul>
+          <li>點開課程講義 PPT，示範可以直接在分頁裡翻頁預覽，不需要另外開 PowerPoint</li>
+          <li>順便示範開啟一個 <code>.docx</code> 講義文件比對</li>
+          <li>體會 VS Code 不只能寫程式，也能當「輕量文件檢視器」使用</li>
+        </ul>
+        <div class="callout tip">
+          <span class="label">帶學員做</span>
+          請每個人自己在下載資料夾裡找到今天的講義檔案並點開看一次，建立「VS Code 也能看我平常的檔案」的直覺。
+        </div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">00:40</div>
+      <div class="body">
+        <h3>建立、儲存檔案（小練習）</h3>
+        <span class="dur">約 5 分鐘</span>
+        <ul>
+          <li>右鍵 Explorer 空白處 → New File，練習新建一個空白 <code>.txt</code></li>
+          <li>存檔快捷鍵 <kbd>Ctrl</kbd>+<kbd>S</kbd>；分頁上有圓點代表尚未儲存</li>
+        </ul>
+        <div class="callout warn">
+          <span class="label">常見誤解</span>
+          很多初學者以為要「儲存專案」，其實 VS Code 沒有專案檔——存的永遠是個別檔案，資料夾只是視窗顯示範圍。
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= MODULE 3 ================= -->
+  <div class="section-head">
+    <span class="tag">00:45–01:05</span>
+    <h2>換主題、換字型 —— 讓 VS Code 變成自己的樣子</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="module">
+      <div class="time">00:45</div>
+      <div class="body">
+        <h3>切換色彩主題</h3>
+        <span class="dur">約 10 分鐘</span>
+        <ul>
+          <li>命令面板 → <code>Preferences: Color Theme</code>，用方向鍵即時預覽並選定</li>
+          <li>命令面板 → <code>Preferences: File Icon Theme</code> 切換檔案圖示風格</li>
+          <li>可額外安裝主題套件（如 One Dark Pro）擴充選擇</li>
+        </ul>
+        <div class="callout tip">
+          <span class="label">帶學員做</span>
+          讓每個人選一個自己喜歡的主題——這是本階段最能讓學員「有成就感」的一步，鼓勵他們現場分享畫面，順便再次練習命令面板的用法。
+        </div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">00:55</div>
+      <div class="body">
+        <h3>調整字型大小與字體</h3>
+        <span class="dur">約 10 分鐘</span>
+        <ul>
+          <li>設定 → 搜尋 <code>font size</code> 調整編輯字型大小</li>
+          <li>設定 → 搜尋 <code>font family</code> 調整字體</li>
+          <li>示範放大字型對長時間閱讀程式碼的幫助</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= MODULE 4 ================= -->
+  <div class="section-head">
+    <span class="tag">01:05–01:15</span>
+    <h2>繁體中文化（可選）</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="module">
+      <div class="time">01:05</div>
+      <div class="body">
+        <h3>依個人習慣決定是否切換</h3>
+        <span class="dur">約 10 分鐘</span>
+        <p>介面已經玩過一輪、也換好喜歡的顏色，現在請學員自行決定：習慣英文介面就跳過這一步，想要中文介面的人再一起做。</p>
+        <ul>
+          <li>命令面板輸入 <code>Configure Display Language</code></li>
+          <li>安裝 <code>Chinese (Traditional) Language Pack</code>，重新啟動生效</li>
+        </ul>
+        <div class="callout">
+          <span class="label">教學用意</span>
+          不強制統一語言——之後投影示範一律用中文介面講解，但學員自己的機器保留英文也完全沒問題，兩種都能對應到同樣的操作。
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= MODULE 5 ================= -->
+  <div class="section-head">
+    <span class="tag">01:15–01:40</span>
+    <h2>介面認識</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="module">
+      <div class="time">01:15</div>
+      <div class="body">
+        <h3>五大分區導覽</h3>
+        <span class="dur">約 15 分鐘</span>
+        <p>前面幾個模組已經摸過 Explorer、命令面板、主題設定——現在正式把這些操作「掛回」對應的介面分區名稱，用「房間」比喻整個介面：</p>
+        <ul>
+          <li><b>Activity Bar（左側最窄那排圖示）</b>：切換不同功能面板的按鈕</li>
+          <li><b>側邊欄（Side Bar）</b>：檔案總管、搜尋、原始碼控制、擴充套件——剛才開資料夾、裝 Office 套件都在這裡操作</li>
+          <li><b>編輯區</b>：真正打字寫東西、剛才看 PPT 的地方，可分割成多個分頁/多個窗格</li>
+          <li><b>狀態列（底部）</b>：目前語言、編碼、游標位置、Git 分支</li>
+          <li><b>右上角工具列</b>：分割編輯器、開啟終端機、切換版面配置</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">01:25</div>
+      <div class="body">
+        <h3>最上方選單列（File / Edit / View…）</h3>
+        <span class="dur">約 10 分鐘</span>
+        <p>視窗最上方一整排文字（File、Edit、Selection、View、Go、Run…）是傳統選單，跟命令面板是<b>兩條通往同樣功能的路</b>——初學者常常忽略它，但它更適合「用滑鼠慢慢找」的習慣。</p>
+        <ul>
+          <li><b>File</b>：Open Folder、Save、Save As，就是剛才開下載資料夾的另一條路</li>
+          <li><b>View</b>：開啟 Explorer、Terminal、Extensions 等各面板，跟 Activity Bar 是同一批功能的另一個入口</li>
+          <li><b>Run</b>：之後執行 Python 爬蟲腳本時，也可以從這裡執行，而不只是打終端機指令</li>
+        </ul>
+        <div class="callout warn">
+          <span class="label">視窗變窄時</span>
+          當視窗或畫面解析度較小，選單列會摺疊成一個「⋯」（More Actions）圖示，把 Terminal、Help 等選項收進去——提醒學員別以為選單不見了，點開「⋯」就找得到。
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="break-row">
+    <div class="time">01:40</div>
+    <div class="body">☕ 休息 10 分鐘</div>
+  </div>
+
+  <!-- ================= MODULE 6 ================= -->
+  <div class="section-head">
+    <span class="tag">01:50–02:15</span>
+    <h2>編輯技巧與快捷鍵</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="module">
+      <div class="time">01:50</div>
+      <div class="body">
+        <h3>多游標與搜尋取代</h3>
+        <span class="dur">約 12 分鐘</span>
+        <ul>
+          <li>按住 <kbd>Alt</kbd>（Mac <kbd>Option</kbd>）點擊多處，同時打字</li>
+          <li><kbd>Ctrl</kbd>+<kbd>D</kbd> 選取下一個相同的字詞，連續按可以多選</li>
+          <li><kbd>Ctrl</kbd>+<kbd>F</kbd> 尋找、<kbd>Ctrl</kbd>+<kbd>H</kbd> 取代；<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> 跨整個專案搜尋</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">02:02</div>
+      <div class="body">
+        <h3>常用快捷鍵小抄</h3>
+        <span class="dur">約 13 分鐘</span>
+        <div class="kbd-grid">
+          <div class="kbd-row"><span>命令面板</span><span><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd></span></div>
+          <div class="kbd-row"><span>快速切換檔案</span><span><kbd>Ctrl</kbd>+<kbd>P</kbd></span></div>
+          <div class="kbd-row"><span>開啟／收起終端機</span><span><kbd>Ctrl</kbd>+<kbd>`</kbd></span></div>
+          <div class="kbd-row"><span>複製整行</span><span><kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>↓</kbd></span></div>
+          <div class="kbd-row"><span>剪下整行</span><span><kbd>Ctrl</kbd>+<kbd>X</kbd></span></div>
+          <div class="kbd-row"><span>單行註解</span><span><kbd>Ctrl</kbd>+<kbd>/</kbd></span></div>
+          <div class="kbd-row"><span>分割編輯器</span><span><kbd>Ctrl</kbd>+<kbd>\</kbd></span></div>
+          <div class="kbd-row"><span>格式化文件</span><span><kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd></span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= MODULE 7 ================= -->
+  <div class="section-head">
+    <span class="tag">02:15–02:25</span>
+    <h2>擴充套件：安裝 Python</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="module">
+      <div class="time">02:15</div>
+      <div class="body">
+        <h3>安裝擴充套件</h3>
+        <span class="dur">約 10 分鐘</span>
+        <p>主題、字型、（可選的）中文包已經在課程一開頭裝過了，這裡只需要補裝實作要用的 Python 套件。</p>
+        <ul>
+          <li>Activity Bar 中方塊圖示 → Extensions</li>
+          <li>安裝 <code>Python</code>（Microsoft 官方）：等下寫爬蟲要用</li>
+          <li>示範停用 / 解除安裝套件的差異</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= MODULE 8 ================= -->
+  <div class="section-head">
+    <span class="tag">02:25–02:45</span>
+    <h2>整合終端機與 Git 基礎</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="module">
+      <div class="time">02:25</div>
+      <div class="body">
+        <h3>內建終端機</h3>
+        <span class="dur">約 10 分鐘</span>
+        <p><kbd>Ctrl</kbd>+<kbd>`</kbd> 開啟整合終端機——它就是在目前資料夾底下開的一個命令列。</p>
+        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">python</span> --version
+<span class="kw">cd</span> Desktop/vscode-workshop
+<span class="kw">dir</span>  <span class="cm"># macOS 用 ls</span></div>
+        <div class="callout warn">
+          <span class="label">常見卡點</span>
+          Windows 上 <code>python</code> 指令可能要打成 <code>py</code>；macOS 上可能要打 <code>python3</code>。上課前務必實測學員機型。
+        </div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">02:35</div>
+      <div class="body">
+        <h3>Git 基礎操作</h3>
+        <span class="dur">約 10 分鐘</span>
+        <ul>
+          <li>終端機輸入 <code>git init</code> 初始化版本控制</li>
+          <li>編輯檔案後，左側 Activity Bar 的「原始碼控制」圖示會出現變更數量</li>
+          <li>在訊息框輸入說明文字，按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 完成 commit</li>
+        </ul>
+        <div class="callout">
+          <span class="label">教學用意</span>
+          不深入教 Git 指令，只讓學員知道「存檔的存檔」這個概念存在，之後有需要能自己延伸學習。
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= MODULE 9 ================= -->
+  <div class="section-head">
+    <span class="tag">02:45–03:00</span>
+    <h2>實作：簽到靶機 API 練習</h2>
+  </div>
+
+  <div class="vuln-box">
+    <div class="vb-head">授權說明 · Authorized Practice Target</div>
+    <div class="vb-body">
+      <p style="margin:0 0 8px;">本練習使用<b>講師自架的教學用簽到系統（靶機）</b>，僅供本課程授權環境練習，情境為典型的 <b>API 缺少授權驗證（Broken Authentication / Missing Access Control）</b>，對應 OWASP API Security Top 10 中的 API2 類別。請提醒學員：這套手法僅可用於自己架設或明確授權的系統。</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="module">
+      <div class="time">02:45</div>
+      <div class="body">
+        <h3>觀察靶機：從 /docs 看到所有 API</h3>
+        <span class="dur">約 5 分鐘</span>
+        <p>靶機這次的弱點示範：介面上開放了 API 文件頁（如 FastAPI 的 <code>/docs</code>），任何人都能看到完整的端點清單與參數格式，且呼叫時<b>不需要任何登入 token</b>。</p>
+        <table class="reqtable">
+          <tr><th>端點</th><th>方法</th><th>參數</th><th>用途</th></tr>
+          <tr><td><code>/api/checkin</code></td><td>POST</td><td><code>{"user_id": "..."}</code></td><td>簽到（無驗證）</td></tr>
+          <tr><td><code>/api/checkout</code></td><td>POST</td><td><code>{"user_id": "..."}</code></td><td>簽退（無驗證）</td></tr>
+        </table>
+        <div class="callout tip">
+          <span class="label">帶學員做</span>
+          在瀏覽器打開靶機的 <code>/docs</code>，用內建的「Try it out」先手動呼叫一次，確認不需要登入就能成功——這一步是理解漏洞的關鍵，比直接看程式碼更直覺。
+        </div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">02:50</div>
+      <div class="body">
+        <h3>寫最小可行的 Python 呼叫腳本</h3>
+        <span class="dur">約 7 分鐘</span>
+        <p>在 VS Code 新建 <code>checkin.py</code>，安裝 <code>requests</code> 套件後撰寫通用的呼叫寫法：</p>
+        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">import</span> requests
+
+<span class="cm"># 靶機網址請以講師公告的實際位址為準</span>
+BASE_URL = <span class="str">"http://靶機位址"</span>
+
+<span class="kw">def</span> checkin(user_id):
+    resp = requests.post(
+        f<span class="str">"{BASE_URL}/api/checkin"</span>,
+        json={<span class="str">"user_id"</span>: user_id}
+    )
+    <span class="kw">print</span>(resp.status_code, resp.json())
+
+<span class="kw">def</span> checkout(user_id):
+    resp = requests.post(
+        f<span class="str">"{BASE_URL}/api/checkout"</span>,
+        json={<span class="str">"user_id"</span>: user_id}
+    )
+    <span class="kw">print</span>(resp.status_code, resp.json())
+
+<span class="kw">if</span> __name__ == <span class="str">"__main__"</span>:
+    checkin(<span class="str">"student01"</span>)</div>
+        <div class="callout">
+          <span class="label">現場調整</span>
+          實際端點路徑、參數欄位名稱、回應格式請依你自架靶機的真實 API 規格調整此範例——上方僅為典型 REST 簽到 API 的通用寫法示範。
+        </div>
+        <p>終端機執行：</p>
+        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">python</span> checkin.py</div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">02:57</div>
+      <div class="body">
+        <h3>討論：這個漏洞為什麼危險？</h3>
+        <span class="dur">約 3 分鐘</span>
+        <p>收尾討論，把技術動手做拉回資安概念：</p>
+        <ul>
+          <li>因為沒有驗證使用者身分（token / session），任何人都能代替別人簽到退</li>
+          <li>公開的 <code>/docs</code> 等於把「攻擊地圖」直接給了所有人</li>
+          <li>正確修法：每個請求都要驗證登入身分，且只能操作「自己」的紀錄</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 style="font-family:'Fraunces',serif;font-size:24px;margin:0 0 16px;">課後自我檢查清單</h2>
+  <ul class="checklist">
+    <li>能獨立安裝 VS Code</li>
+    <li>能開啟資料夾，並用 Office 擴充套件直接瀏覽 PPT / Word 文件</li>
+    <li>能切換喜歡的色彩主題與字型，依個人習慣決定是否切換為繁體中文</li>
+    <li>能講出五大介面分區與選單列的用途，並用命令面板找到任何功能</li>
+    <li>能使用多游標與搜尋取代加速編輯</li>
+    <li>能安裝擴充套件（Python）並開啟整合終端機執行基本指令</li>
+    <li>理解「API 缺少授權驗證」為何是安全風險，並僅在授權環境中練習</li>
+  </ul>
+
+  <div class="legend">
+    <span><b>時間</b> 為建議節奏，可依現場狀況彈性 ±5 分鐘調整</span>
+    <span><b>靶機練習</b> 僅限講師自架授權環境使用</span>
+  </div>
+
+</div>
+
+</body>
+</html>
