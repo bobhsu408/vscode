@@ -595,29 +595,23 @@ kbd{
 
     <div class="module">
       <div class="body">
-        <h3>寫一支程式並執行</h3>
-        <p>讓學員第一次體驗「我寫的東西跑起來了」。程式要短到<b>每個人都能跟著打完</b>，而不是看老師打字。新建 <code>game.py</code>：</p>
-        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">import</span> random
-
-a = random.randint(1, 50)
-b = random.randint(1, 50)
-
-<span class="kw">print</span>(f<span class="str">"{a} + {b} = ?"</span>)
-answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">"你的答案："</span>))
-
-<span class="kw">if</span> answer == a + b:
-    <span class="kw">print</span>(<span class="str">"答對了！🎉"</span>)
-<span class="kw">else</span>:
-    <span class="kw">print</span>(f<span class="str">"答錯囉～ 正確答案是 {a + b}"</span>)</div>
-        <p>終端機執行：</p>
-        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">python</span> game.py</div>
+        <h3>製作簡單的小遊戲：請 AI 幫你寫</h3>
+        <p>不自己從頭寫，改成「AI 寫、你看懂 + 貼上 + 執行」。打開 ChatGPT / Claude 之類的 AI 對話，貼這句話：</p>
+        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div>請幫我寫一個國小數學的問答挑戰 Python 檔，
+可以在終端機畫面做答題</div>
+        <ul>
+          <li>在 VS Code 新建 <code>game.py</code>，把 AI 給的程式碼整段複製貼上、存檔</li>
+          <li>點右上角的三角形（▶ Run Python File），或終端機輸入 <code>python game.py</code>（打不動就換 <code>py</code> / <code>python3</code>）</li>
+          <li>終端機開始出題，就在終端機裡輸入答案、按 Enter</li>
+          <li>想暫停：點一下終端機，按 <kbd>Ctrl</kbd>+<kbd>C</kbd></li>
+        </ul>
         <div class="callout tip">
           <span class="label">帶學員做</span>
-          請每個人自己跑一次，答對答錯都好——重點是看到程式有回應。行有餘力的學員可以看 <code>game-extended.py</code>（五題、四則運算、成績結算的完整版），但不要求當場打完。
+          請每個人自己跑一次，答對答錯都好——重點是看到程式有回應。
         </div>
         <div class="callout">
           <span class="label">備援</span>
-          課程資料夾裡已經附了一份 <code>game.py</code>（跟這裡一樣）和 <code>game-extended.py</code>——手打卡住、或想直接看能跑的成品，隨時可以打開資料夾裡現成的這兩份。
+          課程資料夾裡已經附了一份能跑的 <code>game.py</code> 和進階版 <code>game-extended.py</code>——AI 一時生不出能跑的程式，或想先玩玩看，隨時可以打開資料夾裡現成的這兩份。
         </div>
       </div>
     </div>
@@ -646,30 +640,20 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
 
   <div class="callout tip" style="margin-bottom:22px;">
     <span class="label">這一段的設計原則</span>
-    把今天學過的技巧（新建檔案、存檔、多游標、搜尋取代）一次用在同一個檔案上，最後在瀏覽器看到自己的成果。<b>不需要網路、不需要安裝任何東西</b>——刻意設計成不可能失敗，因為它是學員帶走的最後印象。
+    把今天學過的技巧（存檔、多游標、搜尋取代）一次用在同一個檔案上，最後在瀏覽器看到自己的成果。<b>不需要網路、不需要安裝任何東西</b>——刻意設計成不可能失敗，因為它是學員帶走的最後印象。
   </div>
 
   <div class="timeline">
 
     <div class="module">
       <div class="body">
-        <h3>找到模板，另存成 card.html</h3>
+        <h3>找到模板，用瀏覽器打開它</h3>
         <ul>
           <li>回到一開始打開的課程資料夾，裡面有一個 <code>card-template.html</code></li>
-          <li>點開它，<b>另存新檔</b>（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>）成 <code>card.html</code>，之後就改這一份</li>
+          <li>在 VS Code 的 Explorer 對 <code>card-template.html</code> 右鍵 → <code>Copy Path</code></li>
+          <li>打開 Chrome，把剛複製的路徑貼到網址列，按 Enter</li>
         </ul>
         <div class="callout tip">
-          <span class="label">帶學員做</span>
-          打開 <code>card.html</code> 後留意分頁沒有圓點——代表這是已經存好的檔案，可以直接開始改。
-        </div>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>先看一眼成品，再開始改</h3>
-        <p>Explorer 對 <code>card.html</code> 右鍵 → Reveal in File Explorer / Finder，用瀏覽器打開它。</p>
-        <div class="callout">
           <span class="label">教學用意</span>
           先看到「這是一張真的名片」，學員才知道自己在改什麼。照「先操作、再解釋」的原則，這時候<b>不要</b>先講 HTML 是什麼。
         </div>
@@ -711,12 +695,12 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
 
   <div class="callout warn" style="margin-top:22px;">
     <span class="label">排除狀況</span>
-    <b>中文亂碼</b>：確認模板的 <code>&lt;meta charset="utf-8"&gt;</code> 還在，狀態列右下角應顯示 UTF-8（回扣模組 5「狀態列＝儀表板」）。<b>瀏覽器不開 <code>file://</code></b>：把檔案拖進已開啟的瀏覽器視窗，或右鍵 Copy Path 貼到網址列。<b>改壞版面</b>：<kbd>Ctrl</kbd>+<kbd>Z</kbd> 可救，重新下載 zip 也能拿回原始檔。<b>zip 打不開 / 找不到下載</b>：直接看下方「模板原始碼」，整段選取複製貼上也可以。
+    <b>中文亂碼</b>：確認模板的 <code>&lt;meta charset="utf-8"&gt;</code> 還在，狀態列右下角應顯示 UTF-8（回扣模組 5「狀態列＝儀表板」）。<b>貼上網址列沒反應</b>：確認複製的是 <code>Copy Path</code> 不是 <code>Copy Relative Path</code>；或把檔案直接拖進已開啟的瀏覽器視窗。<b>改壞版面</b>：<kbd>Ctrl</kbd>+<kbd>Z</kbd> 可救，資料夾裡的原始檔也隨時可以重新複製一份出來對照。
   </div>
 
   <details style="margin:26px 0 0;">
-    <summary style="cursor:pointer;font-family:'Fraunces',serif;font-size:18px;font-weight:600;">備用參考：名片模板原始碼（zip 打不開時用）</summary>
-    <p style="margin:10px 0 12px;color:#4A4A5A;font-size:14px;">正常流程請用上面的 zip 下載。這裡只是備援：整段選取複製，貼進自己新建的 <code>card.html</code>。</p>
+    <summary style="cursor:pointer;font-family:'Fraunces',serif;font-size:18px;font-weight:600;">備用參考：名片模板原始碼（找不到資料夾時用）</summary>
+    <p style="margin:10px 0 12px;color:#4A4A5A;font-size:14px;">正常流程請用一開始下載的課程資料夾裡的 <code>card-template.html</code>。這裡只是備援：整段選取複製，貼進自己新建的 <code>card.html</code>。</p>
     <div class="code" style="max-height:420px;overflow:auto;"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><pre style="margin:0;white-space:pre;">&lt;!DOCTYPE html&gt;
 &lt;html lang="zh-Hant"&gt;
 &lt;head&gt;
