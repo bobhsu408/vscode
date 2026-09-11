@@ -112,6 +112,41 @@ body{
   margin-top:2px;
 }
 
+/* ---------- Download card ---------- */
+.dl{
+  margin:28px 0 0;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:20px 22px;
+}
+.dl a.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 20px;
+  background:var(--steel);
+  color:var(--paper-raised);
+  border-radius:9px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:15px;
+}
+.dl a.btn:hover{opacity:.92;}
+.dl .what{
+  margin:12px 0 0;
+  font-size:13.5px;
+  color:var(--grey);
+}
+.dl .what code{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px;
+  background:var(--steel-soft);
+  padding:1px 5px;
+  border-radius:4px;
+  color:var(--ink);
+}
+
 /* ---------- Section titles ---------- */
 .section-head{
   margin:0 0 28px;
@@ -331,9 +366,14 @@ kbd{
       <span>環境<b>Python + 瀏覽器</b></span>
       <span>形式<b>投影 + 現場跟做</b></span>
     </div>
-    <p style="margin-top:20px;">
-      <a href="#card" style="display:inline-block;padding:8px 16px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:600;color:var(--steel);">⬇ 名片模板下載請見「實作：做一張自己的個人名片網頁」單元</a>
-    </p>
+    <div class="dl">
+      <a class="btn" href="/course-materials.zip">⬇ 下載課程資料夾 (.zip)</a>
+      <p class="what">
+        解壓縮後用 VS Code「開啟資料夾」打開，今天全程就在這裡操作。內含：
+        <code>課程PPT.pptx</code>、<code>練習.txt</code>、<code>上課用ppt.pptx</code>、
+        名片模板 <code>card-template.html</code>、終端機小遊戲範例 <code>game.py</code>（及完整版 <code>game-extended.py</code>）。
+      </p>
+    </div>
   </div>
 
   <!-- ================= MODULE 1 ================= -->
@@ -575,6 +615,10 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
           <span class="label">帶學員做</span>
           請每個人自己跑一次，答對答錯都好——重點是看到程式有回應。行有餘力的學員可以看 <code>game-extended.py</code>（五題、四則運算、成績結算的完整版），但不要求當場打完。
         </div>
+        <div class="callout">
+          <span class="label">備援</span>
+          課程資料夾裡已經附了一份 <code>game.py</code>（跟這裡一樣）和 <code>game-extended.py</code>——手打卡住、或想直接看能跑的成品，隨時可以打開資料夾裡現成的這兩份。
+        </div>
       </div>
     </div>
 
@@ -609,15 +653,11 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
 
     <div class="module">
       <div class="body">
-        <h3>下載模板，用 VS Code 打開</h3>
+        <h3>找到模板，另存成 card.html</h3>
         <ul>
-          <li>點下方按鈕下載 <code>card-template.zip</code>，解壓縮到「下載」或「桌面」</li>
-          <li>VS Code：<code>File → Open Folder</code>，打開剛解壓縮的資料夾——裡面有一個 <code>card-template.html</code></li>
-          <li>把它<b>另存新檔</b>（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>）成 <code>card.html</code>，之後就改這一份</li>
+          <li>回到一開始打開的課程資料夾，裡面有一個 <code>card-template.html</code></li>
+          <li>點開它，<b>另存新檔</b>（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>）成 <code>card.html</code>，之後就改這一份</li>
         </ul>
-        <p style="margin:14px 0;">
-          <a href="/card-template.zip" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#3D5A80;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:14.5px;">⬇ 下載 card-template.zip</a>
-        </p>
         <div class="callout tip">
           <span class="label">帶學員做</span>
           打開 <code>card.html</code> 後留意分頁沒有圓點——代表這是已經存好的檔案，可以直接開始改。
