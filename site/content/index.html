@@ -151,9 +151,53 @@ body{
   color:var(--grey);
 }
 
+/* ---------- Resource links ---------- */
+.res-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:10px;
+}
+.res-list li{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:14px 18px;
+}
+.res-list .res-name{
+  font-size:15px;
+  font-weight:600;
+  color:var(--ink);
+}
+.res-list .res-desc{
+  display:block;
+  font-size:13px;
+  font-weight:400;
+  color:var(--grey);
+  margin-top:2px;
+}
+.res-list a.res-link{
+  flex:0 0 auto;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  color:var(--steel);
+  text-decoration:none;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:6px 12px;
+  white-space:nowrap;
+}
+.res-list a.res-link:hover{background:var(--steel-soft);}
+
 @media (max-width:520px){
   .cover{padding:48px 0 28px;}
   .idx-list li{flex-direction:column;align-items:flex-start;gap:4px;}
+  .res-list li{flex-direction:column;align-items:flex-start;gap:10px;}
 }
 </style>
 
@@ -195,6 +239,18 @@ body{
     <li><span class="name">實作：做一張自己的個人名片網頁</span><span class="pg">P.51–56</span></li>
     <li><span class="name">Git 基礎：存檔的存檔</span><span class="pg">P.57</span></li>
     <li><span class="name">課後自我檢查、如何用 AI 做開發</span><span class="pg">P.58–59</span></li>
+  </ul>
+
+  <h2 class="index-head">補充資料</h2>
+  <ul class="res-list">
+    <li>
+      <span class="res-name">VS Code<span class="res-desc">今天要裝的編輯器本體（P.3–8）</span></span>
+      <a class="res-link" href="https://code.visualstudio.com/" target="_blank" rel="noopener">code.visualstudio.com ↗</a>
+    </li>
+    <li>
+      <span class="res-name">Git<span class="res-desc">VS Code 的版本控制要用到，需另外安裝（P.57）</span></span>
+      <a class="res-link" href="https://git-scm.com/" target="_blank" rel="noopener">git-scm.com ↗</a>
+    </li>
   </ul>
 
   <p class="foot-note">頁碼對應課程投影片。詳細操作步驟請跟著現場講解進行。</p>
