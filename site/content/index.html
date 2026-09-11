@@ -11,15 +11,8 @@
   --paper-raised:#ffffff;
   --steel:#3d5a80;
   --steel-soft:#e8eef4;
-  --amber:#c8863a;
-  --amber-soft:#f6e9d8;
-  --green:#2d6a4f;
-  --green-soft:#e3efe8;
   --grey:#6b7280;
   --line:#e0ddd6;
-  --code-bg:#1e1e2e;
-  --code-fg:#d4d4dc;
-  --code-accent:#7fb0d9;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -28,15 +21,8 @@
     --paper-raised:#1e1e28;
     --steel:#8fb4d9;
     --steel-soft:#25303d;
-    --amber:#e0a458;
-    --amber-soft:#3a2f1e;
-    --green:#7fc9a4;
-    --green-soft:#1e3128;
     --grey:#9a9aa5;
     --line:#33333f;
-    --code-bg:#0f0f16;
-    --code-fg:#d4d4dc;
-    --code-accent:#7fb0d9;
   }
 }
 :root[data-theme="dark"]{
@@ -45,15 +31,8 @@
   --paper-raised:#1e1e28;
   --steel:#8fb4d9;
   --steel-soft:#25303d;
-  --amber:#e0a458;
-  --amber-soft:#3a2f1e;
-  --green:#7fc9a4;
-  --green-soft:#1e3128;
   --grey:#9a9aa5;
   --line:#33333f;
-  --code-bg:#0f0f16;
-  --code-fg:#d4d4dc;
-  --code-accent:#7fb0d9;
 }
 
 *{box-sizing:border-box;}
@@ -65,13 +44,13 @@ body{
   line-height:1.6;
 }
 
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px;}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px;}
 
 /* ---------- Cover ---------- */
 .cover{
-  padding:72px 0 48px;
+  padding:72px 0 40px;
   border-bottom:1px solid var(--line);
-  margin-bottom:56px;
+  margin-bottom:40px;
 }
 .cover .eyebrow{
   font-family:"IBM Plex Mono",monospace;
@@ -83,38 +62,22 @@ body{
 }
 .cover h1{
   font-family:"Fraunces",serif;
-  font-size:clamp(36px,5vw,58px);
+  font-size:clamp(32px,5vw,48px);
   font-weight:600;
   margin:0 0 16px;
   text-wrap:balance;
   letter-spacing:-.01em;
 }
 .cover .sub{
-  font-size:18px;
+  font-size:16px;
   color:var(--grey);
-  max-width:640px;
+  max-width:560px;
   margin:0 0 28px;
-}
-.cover-meta{
-  display:flex;
-  gap:28px;
-  flex-wrap:wrap;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:13px;
-  color:var(--steel);
-}
-.cover-meta span b{
-  display:block;
-  font-family:"IBM Plex Sans","Noto Sans TC",sans-serif;
-  color:var(--ink);
-  font-size:15px;
-  font-weight:600;
-  margin-top:2px;
 }
 
 /* ---------- Download card ---------- */
 .dl{
-  margin:28px 0 0;
+  margin:0;
   background:var(--paper-raised);
   border:1px solid var(--line);
   border-radius:12px;
@@ -147,206 +110,50 @@ body{
   color:var(--ink);
 }
 
-/* ---------- Section titles ---------- */
-.section-head{
-  margin:0 0 28px;
-}
-.section-head h2{
+/* ---------- Index list ---------- */
+.index-head{
   font-family:"Fraunces",serif;
-  font-size:28px;
+  font-size:20px;
   font-weight:600;
-  margin:0;
-  text-wrap:balance;
+  margin:40px 0 16px;
 }
-
-/* ---------- Module layout ---------- */
-.timeline{
-  display:flex;
-  flex-direction:column;
-}
-.module{
-  position:relative;
-  padding:0 0 32px 24px;
-  border-left:1px solid var(--line);
-  margin-left:4px;
-}
-.module::before{
-  content:"";
-  position:absolute;
-  left:-5px;
-  top:6px;
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--steel);
-  border:2px solid var(--paper);
-}
-.module:last-child{border-left-color:transparent;}
-.module h3{
-  font-family:"Fraunces",serif;
-  font-size:21px;
-  font-weight:600;
-  margin:0 0 10px;
-}
-.module p{margin:0 0 12px;color:var(--ink);}
-.module ul{margin:0 0 12px;padding-left:20px;}
-.module li{margin-bottom:6px;}
-
-.break-row{
-  padding:2px 0 2px 26px;
-  margin:0 0 36px 4px;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:13px;
-  color:var(--amber);
-  border-left:2px dashed var(--amber);
-}
-
-/* ---------- callouts ---------- */
-.callout{
-  background:var(--steel-soft);
-  border-left:3px solid var(--steel);
-  border-radius:6px;
-  padding:14px 16px;
-  margin:12px 0;
-  font-size:14.5px;
-}
-.callout.warn{background:var(--amber-soft);border-left-color:var(--amber);}
-.callout.tip{background:var(--green-soft);border-left-color:var(--green);}
-.callout .label{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:11px;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  display:block;
-  margin-bottom:4px;
-  opacity:.8;
-}
-
-/* ---------- code blocks ---------- */
-.code{
-  background:var(--code-bg);
-  color:var(--code-fg);
-  border-radius:8px;
-  padding:14px 16px;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:13px;
-  overflow-x:auto;
-  margin:12px 0;
-  line-height:1.55;
-}
-.code .chrome{
-  display:flex;
-  gap:6px;
-  margin-bottom:10px;
-}
-.code .chrome span{
-  width:9px;height:9px;border-radius:50%;
-  background:#5a5a68;
-}
-.code .c1{background:#e0685f;}
-.code .c2{background:#e0b25f;}
-.code .c3{background:#5fbf7a;}
-.code .kw{color:var(--code-accent);}
-.code .cm{color:#8a8a99;}
-.code .str{color:#c9a26b;}
-
-/* ---------- keycap ---------- */
-kbd{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:12px;
-  background:var(--paper-raised);
-  border:1px solid var(--line);
-  border-bottom-width:2px;
-  border-radius:5px;
-  padding:2px 7px;
-  color:var(--ink);
-}
-
-/* ---------- vuln box ---------- */
-.vuln-box{
-  border:1px solid var(--line);
-  border-radius:10px;
-  overflow:hidden;
-  margin:16px 0;
-  background:var(--paper-raised);
-}
-.vuln-box .vb-head{
-  padding:10px 14px;
-  background:var(--amber-soft);
-  color:var(--amber);
-  font-family:"IBM Plex Mono",monospace;
-  font-size:12.5px;
-  font-weight:600;
-  letter-spacing:.03em;
-  border-bottom:1px solid var(--line);
-}
-.vuln-box .vb-body{padding:14px 16px;}
-
-/* ---------- request table ---------- */
-.reqtable{
-  width:100%;
-  border-collapse:collapse;
-  font-size:13.5px;
-  margin:14px 0;
-}
-.reqtable th,.reqtable td{
-  border:1px solid var(--line);
-  padding:8px 10px;
-  text-align:left;
-  vertical-align:top;
-}
-.reqtable th{
-  background:var(--steel-soft);
-  font-family:"IBM Plex Mono",monospace;
-  font-size:12px;
-  color:var(--steel);
-  font-weight:600;
-  letter-spacing:.03em;
-}
-.reqtable code{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:12.5px;
-  background:var(--steel-soft);
-  padding:1px 5px;
-  border-radius:4px;
-}
-
-/* ---------- checklist ---------- */
-.checklist{
+.idx-list{
   list-style:none;
-  margin:14px 0;
+  margin:0;
   padding:0;
   display:grid;
-  gap:8px;
+  gap:2px;
 }
-.checklist li{
+.idx-list li{
   display:flex;
-  gap:10px;
-  align-items:flex-start;
-  font-size:14px;
-  background:var(--paper-raised);
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:10px 12px;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  padding:13px 4px;
+  border-bottom:1px solid var(--line);
+  font-size:15px;
 }
-.checklist li::before{
-  content:"";
-  flex:0 0 16px;
-  width:16px;height:16px;
-  border-radius:4px;
-  border:1.5px solid var(--steel);
-  margin-top:2px;
-}
-
-/* ---------- footer nav ---------- */
-.divider{
-  height:1px;
-  background:var(--line);
-  margin:56px 0 40px;
+.idx-list .name{color:var(--ink);}
+.idx-list .pg{
+  flex:0 0 auto;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px;
+  color:var(--steel);
+  background:var(--steel-soft);
+  padding:3px 9px;
+  border-radius:999px;
+  white-space:nowrap;
 }
 
-@media (max-width:640px){
-  .cover{padding:48px 0 32px;}
+.foot-note{
+  margin-top:40px;
+  font-size:12.5px;
+  color:var(--grey);
+}
+
+@media (max-width:520px){
+  .cover{padding:48px 0 28px;}
+  .idx-list li{flex-direction:column;align-items:flex-start;gap:4px;}
 }
 </style>
 
@@ -357,15 +164,10 @@ kbd{
 <div class="wrap">
 
   <div class="cover">
-    <p class="eyebrow">課程講義 · 步驟導覽</p>
+    <p class="eyebrow">課程講義</p>
     <h1>VS Code 入門三小時</h1>
-    <p class="sub">從零安裝到能寫、能跑、能用終端機與 Git，最後做一張自己的個人名片網頁。適合完全沒寫過程式的學員，全程以「先操作、再解釋」為主——安裝後先動手開檔案、換主題，累積成就感後才進入介面理論。</p>
-    <div class="cover-meta">
-      <span>時長<b>約 3 小時（含休息）</b></span>
-      <span>對象<b>有基礎電腦操作，未寫過程式</b></span>
-      <span>環境<b>Python + 瀏覽器</b></span>
-      <span>形式<b>投影 + 現場跟做</b></span>
-    </div>
+    <p class="sub">從零安裝到能寫、能跑、能用終端機與 Git，最後做一張自己的個人名片網頁。適合完全沒寫過程式的學員。</p>
+
     <div class="dl">
       <a class="btn" href="/course-materials.zip">⬇ 下載課程資料夾 (.zip)</a>
       <p class="what">
@@ -376,440 +178,26 @@ kbd{
     </div>
   </div>
 
-  <!-- ================= MODULE 1 ================= -->
-  <div class="section-head">
-    <h2>安裝與初次啟動</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="module">
-      <div class="body">
-        <h3>下載與安裝</h3>
-        <p>前往官方網站下載對應作業系統版本（Windows / macOS）。強調：這是「編輯器」不是「作業系統」，也不是瀏覽器。</p>
-        <ul>
-          <li>Windows：下載 <code>.exe</code>，安裝時建議勾選「加入右鍵選單」「加入 PATH」</li>
-          <li>macOS：下載 <code>.zip</code>，解壓縮後拖入應用程式資料夾</li>
-          <li>常見卡點：學校/公司電腦沒有系統管理員權限 → 使用者層級安裝版</li>
-        </ul>
-        <div class="callout tip">
-          <span class="label">現場提示</span>
-          安裝過程請學員全程跟做，不要用投影帶過——這一步最容易個別卡住，寧可多留時間巡場。
-        </div>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>初次啟動一覽</h3>
-        <p>開啟後先讓學員看一眼畫面即可，不深入解釋——語言暫時保持英文，介面認識與中文化留到後面模組再處理。先示範一次 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>（Mac 為 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>）開啟命令面板，讓學員有印象即可。</p>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ================= MODULE 2 ================= -->
-  <div class="section-head">
-    <h2>檔案與專案管理：實際打開文件</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="module">
-      <div class="body">
-        <h3>「開啟資料夾」＝ VS Code 裡的「專案」</h3>
-        <p>這是本模組最重要的觀念：VS Code 沒有「新建專案」按鈕，一個資料夾就是一個專案。直接用學員自己的下載資料夾練習，比新建空資料夾更有感。</p>
-        <ul>
-          <li>File → Open Folder，選取「下載」資料夾（課程講義 PPT / 文件已預先放在裡面）</li>
-          <li>左側 Explorer 會顯示該資料夾內容——第一次看到「一堆檔案變成可操作的樹狀清單」</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>用 Office 擴充套件直接在 VS Code 裡看 PPT / Word</h3>
-        <p>安裝 Office Viewer 類擴充套件（Extensions 面板搜尋安裝），在編輯區直接點開下載資料夾裡的 <code>.pptx</code> / <code>.docx</code> 檔案。</p>
-        <ul>
-          <li>點開課程講義 PPT，示範可以直接在分頁裡翻頁預覽，不需要另外開 PowerPoint</li>
-          <li>順便示範開啟一個 <code>.docx</code> 講義文件比對</li>
-          <li>體會 VS Code 不只能寫程式，也能當「輕量文件檢視器」使用</li>
-        </ul>
-        <div class="callout tip">
-          <span class="label">帶學員做</span>
-          請每個人自己在下載資料夾裡找到今天的講義檔案並點開看一次，建立「VS Code 也能看我平常的檔案」的直覺。
-        </div>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>建立、儲存檔案（小練習）</h3>
-        <ul>
-          <li>右鍵 Explorer 空白處 → New File，練習新建一個空白 <code>.txt</code></li>
-          <li>存檔快捷鍵 <kbd>Ctrl</kbd>+<kbd>S</kbd>；分頁上有圓點代表尚未儲存</li>
-        </ul>
-        <div class="callout warn">
-          <span class="label">常見誤解</span>
-          很多初學者以為要「儲存專案」，其實 VS Code 沒有專案檔——存的永遠是個別檔案，資料夾只是視窗顯示範圍。
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ================= MODULE 3 ================= -->
-  <div class="section-head">
-    <h2>換主題、換字型 —— 讓 VS Code 變成自己的樣子</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="module">
-      <div class="body">
-        <h3>切換色彩主題</h3>
-        <ul>
-          <li>命令面板 → <code>Preferences: Color Theme</code>，用方向鍵即時預覽並選定</li>
-          <li>命令面板 → <code>Preferences: File Icon Theme</code> 切換檔案圖示風格</li>
-          <li>可額外安裝主題套件（如 One Dark Pro）擴充選擇</li>
-        </ul>
-        <div class="callout tip">
-          <span class="label">帶學員做</span>
-          讓每個人選一個自己喜歡的主題——這是本階段最能讓學員「有成就感」的一步，鼓勵他們現場分享畫面，順便再次練習命令面板的用法。
-        </div>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>調整字型大小與字體</h3>
-        <ul>
-          <li>設定 → 搜尋 <code>font size</code> 調整編輯字型大小</li>
-          <li>設定 → 搜尋 <code>font family</code> 調整字體</li>
-          <li>示範放大字型對長時間閱讀程式碼的幫助</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ================= MODULE 4 ================= -->
-  <div class="section-head">
-    <h2>繁體中文化（可選）</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="module">
-      <div class="body">
-        <h3>依個人習慣決定是否切換</h3>
-        <p>介面已經玩過一輪、也換好喜歡的顏色，現在請學員自行決定：習慣英文介面就跳過這一步，想要中文介面的人再一起做。</p>
-        <ul>
-          <li>命令面板輸入 <code>Configure Display Language</code></li>
-          <li>安裝 <code>Chinese (Traditional) Language Pack</code>，重新啟動生效</li>
-        </ul>
-        <div class="callout">
-          <span class="label">教學用意</span>
-          不強制統一語言——之後投影示範一律用中文介面講解，但學員自己的機器保留英文也完全沒問題，兩種都能對應到同樣的操作。
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ================= MODULE 5 ================= -->
-  <div class="section-head">
-    <h2>介面認識</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="module">
-      <div class="body">
-        <h3>五大分區導覽</h3>
-        <p>前面幾個模組已經摸過 Explorer、命令面板、主題設定——現在正式把這些操作「掛回」對應的介面分區名稱，用「房間」比喻整個介面：</p>
-        <ul>
-          <li><b>Activity Bar（左側最窄那排圖示）</b>：切換不同功能面板的按鈕</li>
-          <li><b>側邊欄（Side Bar）</b>：檔案總管、搜尋、原始碼控制、擴充套件——剛才開資料夾、裝 Office 套件都在這裡操作</li>
-          <li><b>編輯區</b>：真正打字寫東西、剛才看 PPT 的地方，可分割成多個分頁/多個窗格</li>
-          <li><b>狀態列（底部）</b>：目前語言、編碼、游標位置、Git 分支</li>
-          <li><b>右上角工具列</b>：分割編輯器、開啟終端機、切換版面配置</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>最上方選單列（File / Edit / View…）</h3>
-        <p>視窗最上方一整排文字（File、Edit、Selection、View、Go、Run…）是傳統選單，跟命令面板是<b>兩條通往同樣功能的路</b>——初學者常常忽略它，但它更適合「用滑鼠慢慢找」的習慣。</p>
-        <ul>
-          <li><b>File</b>：Open Folder、Save、Save As，就是剛才開下載資料夾的另一條路</li>
-          <li><b>View</b>：開啟 Explorer、Terminal、Extensions 等各面板，跟 Activity Bar 是同一批功能的另一個入口</li>
-          <li><b>Run</b>：執行目前開啟的檔案，等一下寫小程式時也可以從這裡跑，而不只是打終端機指令</li>
-        </ul>
-        <div class="callout warn">
-          <span class="label">視窗變窄時</span>
-          當視窗或畫面解析度較小，選單列會摺疊成一個「⋯」（More Actions）圖示，把 Terminal、Help 等選項收進去——提醒學員別以為選單不見了，點開「⋯」就找得到。
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="break-row">☕ 休息 10 分鐘</div>
-
-  <!-- ================= MODULE 7 ================= -->
-  <div class="section-head">
-    <h2>擴充套件：安裝 Python</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="module">
-      <div class="body">
-        <h3>安裝擴充套件</h3>
-        <p>主題、字型、（可選的）中文包已經在課程一開頭裝過了，這裡只需要補裝實作要用的 Python 套件。</p>
-        <ul>
-          <li>Activity Bar 中方塊圖示 → Extensions</li>
-          <li>安裝 <code>Python</code>（Microsoft 官方）：等下要寫一支小程式來執行</li>
-          <li>示範停用 / 解除安裝套件的差異</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ================= MODULE 8 ================= -->
-  <div class="section-head">
-    <h2>終端機、寫一支程式執行、Git 基礎</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="module">
-      <div class="body">
-        <h3>內建終端機</h3>
-        <p><kbd>Ctrl</kbd>+<kbd>`</kbd> 開啟整合終端機——它就是在目前資料夾底下開的一個命令列。</p>
-        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">python</span> --version
-<span class="kw">cd</span> Desktop/vscode-workshop
-<span class="kw">dir</span>  <span class="cm"># macOS 用 ls</span></div>
-        <div class="callout warn">
-          <span class="label">常見卡點</span>
-          Windows 上 <code>python</code> 指令可能要打成 <code>py</code>；macOS 上可能要打 <code>python3</code>。上課前務必實測學員機型。
-        </div>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>製作簡單的小遊戲：請 AI 幫你寫</h3>
-        <p>不自己從頭寫，改成「AI 寫、你看懂 + 貼上 + 執行」。打開 ChatGPT / Claude 之類的 AI 對話，貼這句話：</p>
-        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div>請幫我寫一個國小數學的問答挑戰 Python 檔，
-可以在終端機畫面做答題</div>
-        <ul>
-          <li>在 VS Code 新建 <code>game.py</code>，把 AI 給的程式碼整段複製貼上、存檔</li>
-          <li>點右上角的三角形（▶ Run Python File），或終端機輸入 <code>python game.py</code>（打不動就換 <code>py</code> / <code>python3</code>）</li>
-          <li>終端機開始出題，就在終端機裡輸入答案、按 Enter</li>
-          <li>想暫停：點一下終端機，按 <kbd>Ctrl</kbd>+<kbd>C</kbd></li>
-        </ul>
-        <div class="callout tip">
-          <span class="label">帶學員做</span>
-          請每個人自己跑一次，答對答錯都好——重點是看到程式有回應。
-        </div>
-        <div class="callout">
-          <span class="label">備援</span>
-          課程資料夾裡已經附了一份能跑的 <code>game.py</code> 和進階版 <code>game-extended.py</code>——AI 一時生不出能跑的程式，或想先玩玩看，隨時可以打開資料夾裡現成的這兩份。
-        </div>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>Git 基礎操作</h3>
-        <p>VS Code 左側的「原始碼控制」面板只是一層介面，背後實際執行指令的是電腦上另外安裝的 <b>Git</b> 本身——VS Code 不會內建它。</p>
-        <ul>
-          <li>終端機輸入 <code>git --version</code> 確認有沒有裝：有版本號（例如 <code>git version 2.43.0</code>）就代表已經裝好，可以跳過下面的安裝</li>
-          <li>沒反應或跳出「找不到指令」：前往 <code>git-scm.com</code> 下載安裝（Windows / macOS 皆有），裝完<b>重新啟動 VS Code</b>，左側原始碼控制圖示才會恢復正常</li>
-        </ul>
-        <div class="callout warn">
-          <span class="label">常見卡點</span>
-          沒裝 Git 時，左側原始碼控制圖示會顯示「需要安裝 Git」的提示，點下去也會出現同一個下載連結——上課前務必先在學員機型測過一次，這一步比想像中容易卡住。
-        </div>
-        <ul>
-          <li>終端機輸入 <code>git init</code> 初始化版本控制</li>
-          <li>編輯檔案後，左側 Activity Bar 的「原始碼控制」圖示會出現變更數量</li>
-          <li>在訊息框輸入說明文字，按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 完成 commit</li>
-        </ul>
-        <div class="callout">
-          <span class="label">教學用意</span>
-          不深入教 Git 指令，只讓學員知道「存檔的存檔」這個概念存在，之後有需要能自己延伸學習。
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ================= MODULE 9 ================= -->
-  <div class="section-head" id="card">
-    <h2>實作：做一張自己的個人名片網頁</h2>
-  </div>
-
-  <div class="callout tip" style="margin-bottom:22px;">
-    <span class="label">這一段的設計原則</span>
-    把今天學過的技巧（存檔、多游標、搜尋取代）一次用在同一個檔案上，最後在瀏覽器看到自己的成果。<b>不需要網路、不需要安裝任何東西</b>——刻意設計成不可能失敗，因為它是學員帶走的最後印象。
-  </div>
-
-  <div class="timeline">
-
-    <div class="module">
-      <div class="body">
-        <h3>找到模板，用瀏覽器打開它</h3>
-        <ul>
-          <li>回到一開始打開的課程資料夾，裡面有一個 <code>card-template.html</code></li>
-          <li>在 VS Code 的 Explorer 對 <code>card-template.html</code> 右鍵 → <code>Copy Path</code></li>
-          <li>打開 Chrome，把剛複製的路徑貼到網址列，按 Enter</li>
-        </ul>
-        <div class="callout tip">
-          <span class="label">教學用意</span>
-          先看到「這是一張真的名片」，學員才知道自己在改什麼。照「先操作、再解釋」的原則，這時候<b>不要</b>先講 HTML 是什麼。
-        </div>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>三個編輯技巧，一次用上</h3>
-        <ul>
-          <li><b><kbd>Ctrl</kbd>+<kbd>D</kbd> 換名字（3 分鐘）</b>：游標點在任一個 <code>你的名字</code> 上，連按選起全部 3 處，直接打自己的名字。順手把 <code>.avatar</code> 裡的「名」改成自己姓名的第一個字。按過頭就 <kbd>Ctrl</kbd>+<kbd>U</kbd> 退回</li>
-          <li><b><kbd>Alt</kbd>+點擊 改三個技能（2 分鐘）</b>：按住 <kbd>Alt</kbd>（Mac：<kbd>Option</kbd>）依序點在三個技能標籤上，三個游標同時打字</li>
-          <li><b><kbd>Ctrl</kbd>+<kbd>H</kbd> 換主題色（3 分鐘）</b>：找 <code>#3D5A80</code>（<b>連 <code>#</code> 一起輸入</b>），確認「找到 5 筆」後全部取代。模板註解裡有四組建議色</li>
-        </ul>
-        <div class="callout warn">
-          <span class="label">常見誤解</span>
-          多游標不是「複製貼上三次」，是三個游標同時打<b>同樣</b>的字；要打不一樣的內容就得一個一個改——這正是它的限制。
-        </div>
-        <div class="callout tip">
-          <span class="label">帶教技巧</span>
-          換色這步呼應 00:45——「剛才你換的是 VS Code 的顏色，現在換的是自己作品的顏色。」
-        </div>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="body">
-        <h3>填完欄位，回瀏覽器看成果</h3>
-        <p>自我介紹、身分、Email、城市直接打字改，<kbd>Ctrl</kbd>+<kbd>S</kbd> 存檔，切回瀏覽器按 <kbd>F5</kbd> 重新整理。</p>
-        <div class="callout tip">
-          <span class="label">帶學員做</span>
-          鼓勵學員轉螢幕給旁邊的人看，比照換主題那段的分享節奏。
-        </div>
-        <p style="margin-top:14px;"><b>收尾一句話</b>：你剛剛不是「學會寫網頁」，是學會了用 VS Code 快速改一份檔案——這件事對任何檔案都適用。</p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="callout warn" style="margin-top:22px;">
-    <span class="label">排除狀況</span>
-    <b>中文亂碼</b>：確認模板的 <code>&lt;meta charset="utf-8"&gt;</code> 還在，狀態列右下角應顯示 UTF-8（回扣模組 5「狀態列＝儀表板」）。<b>貼上網址列沒反應</b>：確認複製的是 <code>Copy Path</code> 不是 <code>Copy Relative Path</code>；或把檔案直接拖進已開啟的瀏覽器視窗。<b>改壞版面</b>：<kbd>Ctrl</kbd>+<kbd>Z</kbd> 可救，資料夾裡的原始檔也隨時可以重新複製一份出來對照。
-  </div>
-
-  <details style="margin:26px 0 0;">
-    <summary style="cursor:pointer;font-family:'Fraunces',serif;font-size:18px;font-weight:600;">備用參考：名片模板原始碼（找不到資料夾時用）</summary>
-    <p style="margin:10px 0 12px;color:#4A4A5A;font-size:14px;">正常流程請用一開始下載的課程資料夾裡的 <code>card-template.html</code>。這裡只是備援：整段選取複製，貼進自己新建的 <code>card.html</code>。</p>
-    <div class="code" style="max-height:420px;overflow:auto;"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><pre style="margin:0;white-space:pre;">&lt;!DOCTYPE html&gt;
-&lt;html lang="zh-Hant"&gt;
-&lt;head&gt;
-&lt;meta charset="utf-8"&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-&lt;title&gt;你的名字 的個人名片&lt;/title&gt;
-&lt;style&gt;
-  /* ========== 主題色：整份檔案裡 #3D5A80 共出現 5 次 ==========
-     用 Ctrl+H 一次全部換掉，就能改成自己喜歡的顏色。
-     可以試試看： #7C4B73 紫   #2F6B4F 綠   #B5532A 橘   #1E1E2E 墨黑 */
-  body{
-    margin:0; min-height:100vh;
-    display:flex; align-items:center; justify-content:center;
-    background:#F7F6F3;
-    font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;
-    color:#1E1E2E;
-  }
-  .card{
-    width:min(92vw,420px); background:#fff; border-radius:18px; overflow:hidden;
-    box-shadow:0 18px 48px rgba(30,30,46,.14);
-  }
-  .top{ background:#3D5A80; padding:36px 28px 28px; text-align:center; color:#fff; }
-  .avatar{
-    width:88px; height:88px; margin:0 auto 14px; border-radius:50%;
-    background:#fff; color:#3D5A80;
-    font-size:40px; font-weight:700; line-height:88px;
-  }
-  .name{ margin:0; font-size:26px; font-weight:700; letter-spacing:1px; }
-  .role{ margin:6px 0 0; font-size:14px; opacity:.85; }
-  .body{ padding:26px 28px 30px; }
-  .about{ margin:0 0 22px; font-size:15px; line-height:1.9; color:#4A4A5A; }
-  .label{
-    font-size:12px; font-weight:700; letter-spacing:2px;
-    color:#3D5A80; margin:0 0 10px;
-  }
-  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; }
-  .tag{
-    padding:6px 14px; border-radius:999px; font-size:13px;
-    background:rgba(61,90,128,.10); color:#3D5A80;
-  }
-  .contact{ font-size:14px; line-height:2; color:#4A4A5A; }
-  .contact b{ color:#1E1E2E; }
-  .foot{
-    padding:14px 28px 22px; text-align:center;
-    font-size:12px; color:#9A9AA8; border-top:1px solid #EEEDEA;
-  }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-&lt;div class="card"&gt;
-
-  &lt;!-- ① 名字欄位：游標點在下面的名字上，連按 Ctrl+D 可以一次選起全部 3 個 --&gt;
-  &lt;div class="top"&gt;
-    &lt;div class="avatar"&gt;名&lt;/div&gt;   &lt;!-- ② 換成自己姓名的第一個字 --&gt;
-    &lt;h1 class="name"&gt;你的名字&lt;/h1&gt;
-    &lt;p class="role"&gt;你的身分或一句話介紹&lt;/p&gt;   &lt;!-- ③ 例：行政人員 · 正在學寫程式 --&gt;
-  &lt;/div&gt;
-
-  &lt;div class="body"&gt;
-    &lt;!-- ④ 自我介紹，寫兩三句就好 --&gt;
-    &lt;p class="about"&gt;
-      這裡寫一段自我介紹。你可以介紹自己的工作、正在學的東西，
-      或是今天上完課最想記住的一件事。
-    &lt;/p&gt;
-
-    &lt;p class="label"&gt;我 會 的 事&lt;/p&gt;
-    &lt;!-- ⑤ 三行長得一模一樣：按住 Alt 依序點三下放三個游標，一次改完 --&gt;
-    &lt;div class="tags"&gt;
-      &lt;span class="tag"&gt;技能一&lt;/span&gt;
-      &lt;span class="tag"&gt;技能二&lt;/span&gt;
-      &lt;span class="tag"&gt;技能三&lt;/span&gt;
-    &lt;/div&gt;
-
-    &lt;p class="label"&gt;找 得 到 我&lt;/p&gt;
-    &lt;div class="contact"&gt;
-      &lt;div&gt;&lt;b&gt;Email&lt;/b&gt;　你的信箱&lt;/div&gt;
-      &lt;div&gt;&lt;b&gt;城市&lt;/b&gt;　你在的城市&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class="foot"&gt;你的名字 · 2026 · 用 VS Code 親手做的&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;</pre></div>
-  </details>
-
-  <div class="divider"></div>
-
-  <h2 style="font-family:'Fraunces',serif;font-size:24px;margin:0 0 16px;">課後自我檢查清單</h2>
-  <ul class="checklist">
-    <li>能獨立安裝 VS Code</li>
-    <li>能開啟資料夾，並用 Office 擴充套件直接瀏覽 PPT / Word 文件</li>
-    <li>能切換喜歡的色彩主題與字型，依個人習慣決定是否切換為繁體中文</li>
-    <li>能講出五大介面分區與選單列的用途，並用命令面板找到任何功能</li>
-    <li>能安裝擴充套件（Python）並開啟整合終端機執行基本指令</li>
-    <li>能寫出一支簡單的 Python 程式並在終端機執行</li>
-    <li>能新建 HTML 檔案、用多游標與搜尋取代完成一份自己的作品，並在瀏覽器打開它</li>
+  <h2 class="index-head">今天的路線圖</h2>
+  <ul class="idx-list">
+    <li><span class="name">安裝與初次啟動</span><span class="pg">P.3–8</span></li>
+    <li><span class="name">開啟資料夾＝專案，瀏覽自己的檔案</span><span class="pg">P.9–13</span></li>
+    <li><span class="name">個性化：換主題</span><span class="pg">P.14–17</span></li>
+    <li><span class="name">在 VS Code 裡打開 txt / PPT 文件</span><span class="pg">P.18–26</span></li>
+    <li><span class="name">建立與儲存檔案、開啟 Auto Save</span><span class="pg">P.27–30</span></li>
+    <li><span class="name">繁體中文化（可選）</span><span class="pg">P.31</span></li>
+    <li><span class="name">介面五大分區</span><span class="pg">P.32–37</span></li>
+    <li><span class="name">☕ 休息</span><span class="pg">P.38</span></li>
+    <li><span class="name">安裝 Python 擴充套件</span><span class="pg">P.39</span></li>
+    <li><span class="name">認識整合終端機</span><span class="pg">P.40–41</span></li>
+    <li><span class="name">確認 Python 是否安裝成功</span><span class="pg">P.42</span></li>
+    <li><span class="name">實作：用 AI 做一個終端機小遊戲</span><span class="pg">P.43–50</span></li>
+    <li><span class="name">實作：做一張自己的個人名片網頁</span><span class="pg">P.51–56</span></li>
+    <li><span class="name">Git 基礎：存檔的存檔</span><span class="pg">P.57</span></li>
+    <li><span class="name">課後自我檢查、如何用 AI 做開發</span><span class="pg">P.58–59</span></li>
   </ul>
+
+  <p class="foot-note">頁碼對應課程投影片。詳細操作步驟請跟著現場講解進行。</p>
 
 </div>
 
