@@ -619,6 +619,15 @@ kbd{
     <div class="module">
       <div class="body">
         <h3>Git 基礎操作</h3>
+        <p>VS Code 左側的「原始碼控制」面板只是一層介面，背後實際執行指令的是電腦上另外安裝的 <b>Git</b> 本身——VS Code 不會內建它。</p>
+        <ul>
+          <li>終端機輸入 <code>git --version</code> 確認有沒有裝：有版本號（例如 <code>git version 2.43.0</code>）就代表已經裝好，可以跳過下面的安裝</li>
+          <li>沒反應或跳出「找不到指令」：前往 <code>git-scm.com</code> 下載安裝（Windows / macOS 皆有），裝完<b>重新啟動 VS Code</b>，左側原始碼控制圖示才會恢復正常</li>
+        </ul>
+        <div class="callout warn">
+          <span class="label">常見卡點</span>
+          沒裝 Git 時，左側原始碼控制圖示會顯示「需要安裝 Git」的提示，點下去也會出現同一個下載連結——上課前務必先在學員機型測過一次，這一步比想像中容易卡住。
+        </div>
         <ul>
           <li>終端機輸入 <code>git init</code> 初始化版本控制</li>
           <li>編輯檔案後，左側 Activity Bar 的「原始碼控制」圖示會出現變更數量</li>
