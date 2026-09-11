@@ -118,8 +118,8 @@ content_slide("00:00 起", "今天的路線圖", [
     "01:40–01:50  休息",
     "01:50–02:15  編輯技巧與快捷鍵",
     "02:15–02:25  擴充套件：安裝 Python",
-    "02:25–02:45  整合終端機與 Git 基礎",
-    "02:45–03:00  實作：簽到靶機 API 練習",
+    "02:25–02:45  終端機、寫一支程式執行、Git 基礎",
+    "02:45–03:00  實作：做一張自己的個人名片網頁",
 ])
 
 # 3. Install
@@ -194,7 +194,7 @@ content_slide("01:25–01:40", "最上方選單列（File / Edit / View…）", 
     "跟命令面板是兩條通往同樣功能的路，更適合「用滑鼠慢慢找」",
     "File：Open Folder、Save、Save As",
     "View：開啟 Explorer、Terminal、Extensions 等面板",
-    "Run：之後執行 Python 爬蟲腳本時也能從這裡執行",
+    "Run：執行目前開啟的檔案，等一下寫小程式時也能從這裡跑",
 ], note="視窗變窄時選單列會摺疊成「⋯」（More Actions）圖示，收進 Terminal、Help 等選項——別以為選單不見了", note_color=AMBER)
 
 # 12. Break
@@ -223,12 +223,12 @@ content_slide("02:02–02:15", "常用快捷鍵小抄", [
 content_slide("02:15–02:25", "擴充套件：安裝 Python", [
     "主題、字型、中文包已在課程一開頭裝過",
     "Activity Bar 中方塊圖示 → Extensions",
-    "安裝 Python（Microsoft 官方）：等下寫爬蟲要用",
+    "安裝 Python（Microsoft 官方）：等下要寫一支小程式來執行",
     "示範停用 / 解除安裝套件的差異",
 ])
 
 # 16. Terminal
-content_slide("02:25–02:35", "內建終端機", [
+content_slide("02:25–02:31", "內建終端機", [
     "Ctrl+` 開啟整合終端機——在目前資料夾底下開的命令列",
 ], note="常見卡點：Windows 上可能要打 py；macOS 上可能要打 python3。上課前務必實測學員機型", note_color=AMBER,
 code=[
@@ -237,47 +237,53 @@ code=[
     "dir   # macOS 用 ls",
 ])
 
+# 16b. Write and run a program
+content_slide("02:31–02:39", "寫一支程式並執行", [
+    "新建 game.py，帶學員一行一行打完",
+    "終端機執行 python game.py",
+], note="第一次體驗「我寫的東西跑起來了」。程式要短到每個人都打得完，不是看老師打字", note_color=STEEL,
+code=[
+    "import random",
+    "",
+    "a = random.randint(1, 50)",
+    "b = random.randint(1, 50)",
+    "",
+    'print(f"{a} + {b} = ?")',
+    'answer = int(input("你的答案："))',
+    "",
+    "if answer == a + b:",
+    '    print("答對了！")',
+    "else:",
+    '    print(f"答錯囉～ 正確答案是 {a + b}")',
+])
+
 # 17. Git basics
-content_slide("02:35–02:45", "Git 基礎操作", [
+content_slide("02:39–02:45", "Git 基礎操作", [
     "終端機輸入 git init 初始化版本控制",
     "編輯檔案後，左側「原始碼控制」圖示會顯示變更數量",
     "訊息框輸入說明文字，Ctrl+Enter 完成 commit",
 ], note="教學用意：不深入教 Git 指令，只讓學員知道「存檔的存檔」這個概念存在", note_color=STEEL)
 
-# 18. Target authorization
-content_slide("02:45", "授權說明 · 靶機練習", [
-    "本練習使用講師自架的教學用簽到系統（靶機）",
-    "僅供本課程授權環境練習",
-    "情境：API 缺少授權驗證（Broken Authentication / Missing Access Control）",
-    "對應 OWASP API Security Top 10 — API2 類別",
-], note="請提醒學員：此手法僅可用於自己架設或明確授權的系統", note_color=AMBER)
+# 18. Card exercise intro
+content_slide("02:45–02:49", "實作：做一張自己的個人名片網頁", [
+    "Explorer 右鍵 → New File，檔名整串連 .html 一起打：card.html",
+    "從課程網頁複製模板全文，Ctrl+V 貼上，Ctrl+S 存檔",
+    "先用瀏覽器打開看一眼成品，再開始改",
+], note="不需要網路、不需要安裝任何東西——刻意設計成不可能失敗，因為它是學員帶走的最後印象", note_color=STEEL)
 
-# 19. Observe target
-content_slide("02:45–02:50", "觀察靶機：從 /docs 看到所有 API", [
-    "介面上開放了 API 文件頁（如 FastAPI 的 /docs）",
-    "任何人都能看到完整端點清單與參數格式",
-    "呼叫時不需要任何登入 token",
-], note="帶學員做：打開靶機 /docs，用「Try it out」手動呼叫一次，確認不需登入就能成功", note_color=STEEL)
+# 19. Three editing techniques
+content_slide("02:50–02:58", "三個編輯技巧，一次用上", [
+    "Ctrl+D 換名字：連按選起全部 3 處，一次改完",
+    "Alt+點擊 改三個技能標籤：三個游標同時打字",
+    "Ctrl+H 換主題色：找 #3D5A80，確認「找到 5 筆」後全部取代",
+], note="常見誤解：多游標不是複製貼上三次，是三個游標同時打同樣的字。按過頭用 Ctrl+U 退回", note_color=AMBER)
 
-# 20. Write script
-content_slide("02:50–02:57", "寫最小可行的 Python 呼叫腳本", [
-    "新建 checkin.py，安裝 requests 套件",
-    "端點路徑、參數欄位請依實際靶機規格調整",
-], code=[
-    "import requests",
-    'BASE_URL = "http://靶機位址"',
-    "",
-    "def checkin(user_id):",
-    '    r = requests.post(f"{BASE_URL}/api/checkin", json={"user_id": user_id})',
-    "    print(r.status_code, r.json())",
-])
-
-# 21. Discussion
-content_slide("02:57–03:00", "討論：這個漏洞為什麼危險？", [
-    "沒有驗證使用者身分（token / session）→ 任何人可代簽他人",
-    "公開的 /docs 等於把「攻擊地圖」直接給了所有人",
-    "正確修法：每個請求驗證登入身分，且只能操作自己的紀錄",
-])
+# 20. Wrap up
+content_slide("02:58–03:00", "回瀏覽器看成果", [
+    "填完自我介紹、身分、Email、城市，Ctrl+S 存檔",
+    "切回瀏覽器按 F5——那是你自己的一頁",
+    "收尾：你不是學會寫網頁，是學會用 VS Code 快速改一份檔案",
+], note="鼓勵學員轉螢幕給旁邊的人看，比照換主題那段的分享節奏", note_color=STEEL)
 
 # 22. Checklist
 content_slide("課後", "自我檢查清單", [
@@ -287,7 +293,8 @@ content_slide("課後", "自我檢查清單", [
     "能講出五大介面分區與選單列的用途，並用命令面板找到任何功能",
     "能使用多游標與搜尋取代加速編輯",
     "能安裝擴充套件（Python）並開啟整合終端機執行基本指令",
-    "理解「API 缺少授權驗證」為何是安全風險，並僅在授權環境中練習",
+    "能寫出一支簡單的 Python 程式並在終端機執行",
+    "能新建 HTML 檔案、用多游標與搜尋取代完成一份自己的作品，並在瀏覽器打開它",
 ])
 
 out_path = "/media/data/共用文件/專案開發/微軟大戰程式碼/vscode-course.pptx"

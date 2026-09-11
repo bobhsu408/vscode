@@ -415,7 +415,7 @@ kbd{
     <div class="cover-meta">
       <span>時長<b>3 小時（含休息）</b></span>
       <span>對象<b>有基礎電腦操作，未寫過程式</b></span>
-      <span>環境<b>自架授權簽到靶機 + Python</b></span>
+      <span>環境<b>Python + 瀏覽器</b></span>
       <span>形式<b>投影 + 現場跟做</b></span>
     </div>
     <p class="downloads" style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
@@ -613,7 +613,7 @@ kbd{
         <ul>
           <li><b>File</b>：Open Folder、Save、Save As，就是剛才開下載資料夾的另一條路</li>
           <li><b>View</b>：開啟 Explorer、Terminal、Extensions 等各面板，跟 Activity Bar 是同一批功能的另一個入口</li>
-          <li><b>Run</b>：之後執行 Python 爬蟲腳本時，也可以從這裡執行，而不只是打終端機指令</li>
+          <li><b>Run</b>：執行目前開啟的檔案，等一下寫小程式時也可以從這裡跑，而不只是打終端機指令</li>
         </ul>
         <div class="callout warn">
           <span class="label">視窗變窄時</span>
@@ -684,7 +684,7 @@ kbd{
         <p>主題、字型、（可選的）中文包已經在課程一開頭裝過了，這裡只需要補裝實作要用的 Python 套件。</p>
         <ul>
           <li>Activity Bar 中方塊圖示 → Extensions</li>
-          <li>安裝 <code>Python</code>（Microsoft 官方）：等下寫爬蟲要用</li>
+          <li>安裝 <code>Python</code>（Microsoft 官方）：等下要寫一支小程式來執行</li>
           <li>示範停用 / 解除安裝套件的差異</li>
         </ul>
       </div>
@@ -695,7 +695,7 @@ kbd{
   <!-- ================= MODULE 8 ================= -->
   <div class="section-head">
     <span class="tag">02:25–02:45</span>
-    <h2>整合終端機與 Git 基礎</h2>
+    <h2>終端機、寫一支程式執行、Git 基礎</h2>
   </div>
   <div class="timeline">
 
@@ -703,7 +703,7 @@ kbd{
       <div class="time">02:25</div>
       <div class="body">
         <h3>內建終端機</h3>
-        <span class="dur">約 10 分鐘</span>
+        <span class="dur">約 6 分鐘</span>
         <p><kbd>Ctrl</kbd>+<kbd>`</kbd> 開啟整合終端機——它就是在目前資料夾底下開的一個命令列。</p>
         <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">python</span> --version
 <span class="kw">cd</span> Desktop/vscode-workshop
@@ -716,10 +716,37 @@ kbd{
     </div>
 
     <div class="module">
-      <div class="time">02:35</div>
+      <div class="time">02:31</div>
+      <div class="body">
+        <h3>寫一支程式並執行</h3>
+        <span class="dur">約 8 分鐘</span>
+        <p>讓學員第一次體驗「我寫的東西跑起來了」。程式要短到<b>每個人都能跟著打完</b>，而不是看老師打字。新建 <code>game.py</code>：</p>
+        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">import</span> random
+
+a = random.randint(1, 50)
+b = random.randint(1, 50)
+
+<span class="kw">print</span>(f<span class="str">"{a} + {b} = ?"</span>)
+answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">"你的答案："</span>))
+
+<span class="kw">if</span> answer == a + b:
+    <span class="kw">print</span>(<span class="str">"答對了！🎉"</span>)
+<span class="kw">else</span>:
+    <span class="kw">print</span>(f<span class="str">"答錯囉～ 正確答案是 {a + b}"</span>)</div>
+        <p>終端機執行：</p>
+        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">python</span> game.py</div>
+        <div class="callout tip">
+          <span class="label">帶學員做</span>
+          請每個人自己跑一次，答對答錯都好——重點是看到程式有回應。行有餘力的學員可以看 <code>game-extended.py</code>（五題、四則運算、成績結算的完整版），但不要求當場打完。
+        </div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">02:39</div>
       <div class="body">
         <h3>Git 基礎操作</h3>
-        <span class="dur">約 10 分鐘</span>
+        <span class="dur">約 6 分鐘</span>
         <ul>
           <li>終端機輸入 <code>git init</code> 初始化版本控制</li>
           <li>編輯檔案後，左側 Activity Bar 的「原始碼控制」圖示會出現變更數量</li>
@@ -737,14 +764,12 @@ kbd{
   <!-- ================= MODULE 9 ================= -->
   <div class="section-head">
     <span class="tag">02:45–03:00</span>
-    <h2>實作：簽到靶機 API 練習</h2>
+    <h2>實作：做一張自己的個人名片網頁</h2>
   </div>
 
-  <div class="vuln-box">
-    <div class="vb-head">授權說明 · Authorized Practice Target</div>
-    <div class="vb-body">
-      <p style="margin:0 0 8px;">本練習使用<b>講師自架的教學用簽到系統（靶機）</b>，僅供本課程授權環境練習，情境為典型的 <b>API 缺少授權驗證（Broken Authentication / Missing Access Control）</b>，對應 OWASP API Security Top 10 中的 API2 類別。請提醒學員：這套手法僅可用於自己架設或明確授權的系統。</p>
-    </div>
+  <div class="callout tip" style="margin-bottom:22px;">
+    <span class="label">這一段的設計原則</span>
+    把今天學過的技巧（新建檔案、存檔、多游標、搜尋取代）一次用在同一個檔案上，最後在瀏覽器看到自己的成果。<b>不需要網路、不需要安裝任何東西</b>——刻意設計成不可能失敗，因為它是學員帶走的最後印象。
   </div>
 
   <div class="timeline">
@@ -752,17 +777,32 @@ kbd{
     <div class="module">
       <div class="time">02:45</div>
       <div class="body">
-        <h3>觀察靶機：從 /docs 看到所有 API</h3>
-        <span class="dur">約 5 分鐘</span>
-        <p>靶機這次的弱點示範：介面上開放了 API 文件頁（如 FastAPI 的 <code>/docs</code>），任何人都能看到完整的端點清單與參數格式，且呼叫時<b>不需要任何登入 token</b>。</p>
-        <table class="reqtable">
-          <tr><th>端點</th><th>方法</th><th>參數</th><th>用途</th></tr>
-          <tr><td><code>/api/checkin</code></td><td>POST</td><td><code>{"user_id": "..."}</code></td><td>簽到（無驗證）</td></tr>
-          <tr><td><code>/api/checkout</code></td><td>POST</td><td><code>{"user_id": "..."}</code></td><td>簽退（無驗證）</td></tr>
-        </table>
+        <h3>建立檔案並貼上模板</h3>
+        <span class="dur">約 4 分鐘</span>
+        <ul>
+          <li>Explorer 右鍵 → New File，檔名<b>整串連 <code>.html</code> 一起打</b>：<code>card.html</code></li>
+          <li>複製下方模板全文，<kbd>Ctrl</kbd>+<kbd>V</kbd> 貼上，<kbd>Ctrl</kbd>+<kbd>S</kbd> 存檔</li>
+        </ul>
+        <div class="callout warn">
+          <span class="label">常見誤解</span>
+          只打 <code>card</code> 會變成沒有副檔名的檔案，瀏覽器不認得。副檔名一定要自己打出來——這也是為什麼我們用手動新建，而不是提供下載。
+        </div>
         <div class="callout tip">
           <span class="label">帶學員做</span>
-          在瀏覽器打開靶機的 <code>/docs</code>，用內建的「Try it out」先手動呼叫一次，確認不需要登入就能成功——這一步是理解漏洞的關鍵，比直接看程式碼更直覺。
+          存檔後注意分頁的圓點消失了——這就是模組 2 講過的「已儲存」。
+        </div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="time">02:49</div>
+      <div class="body">
+        <h3>先看一眼成品，再開始改</h3>
+        <span class="dur">約 1 分鐘</span>
+        <p>Explorer 對 <code>card.html</code> 右鍵 → Reveal in File Explorer / Finder，用瀏覽器打開它。</p>
+        <div class="callout">
+          <span class="label">教學用意</span>
+          先看到「這是一張真的名片」，學員才知道自己在改什麼。照「先操作、再解釋」的原則，這時候<b>不要</b>先講 HTML 是什麼。
         </div>
       </div>
     </div>
@@ -770,54 +810,133 @@ kbd{
     <div class="module">
       <div class="time">02:50</div>
       <div class="body">
-        <h3>寫最小可行的 Python 呼叫腳本</h3>
-        <span class="dur">約 7 分鐘</span>
-        <p>在 VS Code 新建 <code>checkin.py</code>，安裝 <code>requests</code> 套件後撰寫通用的呼叫寫法：</p>
-        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">import</span> requests
-
-<span class="cm"># 靶機網址請以講師公告的實際位址為準</span>
-BASE_URL = <span class="str">"http://靶機位址"</span>
-
-<span class="kw">def</span> checkin(user_id):
-    resp = requests.post(
-        f<span class="str">"{BASE_URL}/api/checkin"</span>,
-        json={<span class="str">"user_id"</span>: user_id}
-    )
-    <span class="kw">print</span>(resp.status_code, resp.json())
-
-<span class="kw">def</span> checkout(user_id):
-    resp = requests.post(
-        f<span class="str">"{BASE_URL}/api/checkout"</span>,
-        json={<span class="str">"user_id"</span>: user_id}
-    )
-    <span class="kw">print</span>(resp.status_code, resp.json())
-
-<span class="kw">if</span> __name__ == <span class="str">"__main__"</span>:
-    checkin(<span class="str">"student01"</span>)</div>
-        <div class="callout">
-          <span class="label">現場調整</span>
-          實際端點路徑、參數欄位名稱、回應格式請依你自架靶機的真實 API 規格調整此範例——上方僅為典型 REST 簽到 API 的通用寫法示範。
+        <h3>三個編輯技巧，一次用上</h3>
+        <span class="dur">約 8 分鐘</span>
+        <ul>
+          <li><b><kbd>Ctrl</kbd>+<kbd>D</kbd> 換名字（3 分鐘）</b>：游標點在任一個 <code>你的名字</code> 上，連按選起全部 3 處，直接打自己的名字。順手把 <code>.avatar</code> 裡的「名」改成自己姓名的第一個字。按過頭就 <kbd>Ctrl</kbd>+<kbd>U</kbd> 退回</li>
+          <li><b><kbd>Alt</kbd>+點擊 改三個技能（2 分鐘）</b>：按住 <kbd>Alt</kbd>（Mac：<kbd>Option</kbd>）依序點在三個技能標籤上，三個游標同時打字</li>
+          <li><b><kbd>Ctrl</kbd>+<kbd>H</kbd> 換主題色（3 分鐘）</b>：找 <code>#3D5A80</code>（<b>連 <code>#</code> 一起輸入</b>），確認「找到 5 筆」後全部取代。模板註解裡有四組建議色</li>
+        </ul>
+        <div class="callout warn">
+          <span class="label">常見誤解</span>
+          多游標不是「複製貼上三次」，是三個游標同時打<b>同樣</b>的字；要打不一樣的內容就得一個一個改——這正是它的限制。
         </div>
-        <p>終端機執行：</p>
-        <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">python</span> checkin.py</div>
+        <div class="callout tip">
+          <span class="label">帶教技巧</span>
+          換色這步呼應 00:45——「剛才你換的是 VS Code 的顏色，現在換的是自己作品的顏色。」
+        </div>
       </div>
     </div>
 
     <div class="module">
-      <div class="time">02:57</div>
+      <div class="time">02:58</div>
       <div class="body">
-        <h3>討論：這個漏洞為什麼危險？</h3>
-        <span class="dur">約 3 分鐘</span>
-        <p>收尾討論，把技術動手做拉回資安概念：</p>
-        <ul>
-          <li>因為沒有驗證使用者身分（token / session），任何人都能代替別人簽到退</li>
-          <li>公開的 <code>/docs</code> 等於把「攻擊地圖」直接給了所有人</li>
-          <li>正確修法：每個請求都要驗證登入身分，且只能操作「自己」的紀錄</li>
-        </ul>
+        <h3>填完欄位，回瀏覽器看成果</h3>
+        <span class="dur">約 2 分鐘</span>
+        <p>自我介紹、身分、Email、城市直接打字改，<kbd>Ctrl</kbd>+<kbd>S</kbd> 存檔，切回瀏覽器按 <kbd>F5</kbd> 重新整理。</p>
+        <div class="callout tip">
+          <span class="label">帶學員做</span>
+          鼓勵學員轉螢幕給旁邊的人看，比照換主題那段的分享節奏。
+        </div>
+        <p style="margin-top:14px;"><b>收尾一句話</b>：你剛剛不是「學會寫網頁」，是學會了用 VS Code 快速改一份檔案——這件事對任何檔案都適用。</p>
       </div>
     </div>
 
   </div>
+
+  <div class="callout warn" style="margin-top:22px;">
+    <span class="label">排除狀況</span>
+    <b>中文亂碼</b>：確認模板的 <code>&lt;meta charset="utf-8"&gt;</code> 還在，狀態列右下角應顯示 UTF-8（回扣模組 5「狀態列＝儀表板」）。<b>瀏覽器不開 <code>file://</code></b>：把檔案拖進已開啟的瀏覽器視窗，或右鍵 Copy Path 貼到網址列。<b>改壞版面</b>：<kbd>Ctrl</kbd>+<kbd>Z</kbd> 可救，下方模板原文隨時可以重貼。
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif;font-size:20px;margin:26px 0 10px;">名片模板原始碼</h3>
+  <p style="margin:0 0 12px;color:#4A4A5A;">請學員全選複製，貼進自己新建的 <code>card.html</code>。</p>
+  <div class="code" style="max-height:420px;overflow:auto;"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><pre style="margin:0;white-space:pre;">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-Hant"&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+&lt;title&gt;你的名字 的個人名片&lt;/title&gt;
+&lt;style&gt;
+  /* ========== 主題色：整份檔案裡 #3D5A80 共出現 5 次 ==========
+     用 Ctrl+H 一次全部換掉，就能改成自己喜歡的顏色。
+     可以試試看： #7C4B73 紫   #2F6B4F 綠   #B5532A 橘   #1E1E2E 墨黑 */
+  body{
+    margin:0; min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    background:#F7F6F3;
+    font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;
+    color:#1E1E2E;
+  }
+  .card{
+    width:min(92vw,420px); background:#fff; border-radius:18px; overflow:hidden;
+    box-shadow:0 18px 48px rgba(30,30,46,.14);
+  }
+  .top{ background:#3D5A80; padding:36px 28px 28px; text-align:center; color:#fff; }
+  .avatar{
+    width:88px; height:88px; margin:0 auto 14px; border-radius:50%;
+    background:#fff; color:#3D5A80;
+    font-size:40px; font-weight:700; line-height:88px;
+  }
+  .name{ margin:0; font-size:26px; font-weight:700; letter-spacing:1px; }
+  .role{ margin:6px 0 0; font-size:14px; opacity:.85; }
+  .body{ padding:26px 28px 30px; }
+  .about{ margin:0 0 22px; font-size:15px; line-height:1.9; color:#4A4A5A; }
+  .label{
+    font-size:12px; font-weight:700; letter-spacing:2px;
+    color:#3D5A80; margin:0 0 10px;
+  }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; }
+  .tag{
+    padding:6px 14px; border-radius:999px; font-size:13px;
+    background:rgba(61,90,128,.10); color:#3D5A80;
+  }
+  .contact{ font-size:14px; line-height:2; color:#4A4A5A; }
+  .contact b{ color:#1E1E2E; }
+  .foot{
+    padding:14px 28px 22px; text-align:center;
+    font-size:12px; color:#9A9AA8; border-top:1px solid #EEEDEA;
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class="card"&gt;
+
+  &lt;!-- ① 名字欄位：游標點在下面的名字上，連按 Ctrl+D 可以一次選起全部 3 個 --&gt;
+  &lt;div class="top"&gt;
+    &lt;div class="avatar"&gt;名&lt;/div&gt;   &lt;!-- ② 換成自己姓名的第一個字 --&gt;
+    &lt;h1 class="name"&gt;你的名字&lt;/h1&gt;
+    &lt;p class="role"&gt;你的身分或一句話介紹&lt;/p&gt;   &lt;!-- ③ 例：行政人員 · 正在學寫程式 --&gt;
+  &lt;/div&gt;
+
+  &lt;div class="body"&gt;
+    &lt;!-- ④ 自我介紹，寫兩三句就好 --&gt;
+    &lt;p class="about"&gt;
+      這裡寫一段自我介紹。你可以介紹自己的工作、正在學的東西，
+      或是今天上完課最想記住的一件事。
+    &lt;/p&gt;
+
+    &lt;p class="label"&gt;我 會 的 事&lt;/p&gt;
+    &lt;!-- ⑤ 三行長得一模一樣：按住 Alt 依序點三下放三個游標，一次改完 --&gt;
+    &lt;div class="tags"&gt;
+      &lt;span class="tag"&gt;技能一&lt;/span&gt;
+      &lt;span class="tag"&gt;技能二&lt;/span&gt;
+      &lt;span class="tag"&gt;技能三&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;p class="label"&gt;找 得 到 我&lt;/p&gt;
+    &lt;div class="contact"&gt;
+      &lt;div&gt;&lt;b&gt;Email&lt;/b&gt;　你的信箱&lt;/div&gt;
+      &lt;div&gt;&lt;b&gt;城市&lt;/b&gt;　你在的城市&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="foot"&gt;你的名字 · 2026 · 用 VS Code 親手做的&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
 
   <div class="divider"></div>
 
@@ -829,12 +948,12 @@ BASE_URL = <span class="str">"http://靶機位址"</span>
     <li>能講出五大介面分區與選單列的用途，並用命令面板找到任何功能</li>
     <li>能使用多游標與搜尋取代加速編輯</li>
     <li>能安裝擴充套件（Python）並開啟整合終端機執行基本指令</li>
-    <li>理解「API 缺少授權驗證」為何是安全風險，並僅在授權環境中練習</li>
+    <li>能寫出一支簡單的 Python 程式並在終端機執行</li>
+    <li>能新建 HTML 檔案、用多游標與搜尋取代完成一份自己的作品，並在瀏覽器打開它</li>
   </ul>
 
   <div class="legend">
     <span><b>時間</b> 為建議節奏，可依現場狀況彈性 ±5 分鐘調整</span>
-    <span><b>靶機練習</b> 僅限講師自架授權環境使用</span>
   </div>
 
 </div>
