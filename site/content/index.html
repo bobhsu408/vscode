@@ -114,20 +114,7 @@ body{
 
 /* ---------- Section titles ---------- */
 .section-head{
-  display:flex;
-  align-items:baseline;
-  gap:16px;
   margin:0 0 28px;
-}
-.section-head .tag{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:13px;
-  color:var(--paper-raised);
-  background:var(--steel);
-  padding:4px 10px;
-  border-radius:4px;
-  letter-spacing:.04em;
-  white-space:nowrap;
 }
 .section-head h2{
   font-family:"Fraunces",serif;
@@ -137,87 +124,46 @@ body{
   text-wrap:balance;
 }
 
-/* ---------- Timeline layout ---------- */
+/* ---------- Module layout ---------- */
 .timeline{
-  display:grid;
-  grid-template-columns:150px 1fr;
-  gap:0 28px;
+  display:flex;
+  flex-direction:column;
 }
 .module{
-  grid-column:1 / -1;
-  display:grid;
-  grid-template-columns:150px 1fr;
-  gap:0 28px;
   position:relative;
-  padding-bottom:52px;
+  padding:0 0 32px 24px;
+  border-left:1px solid var(--line);
+  margin-left:4px;
 }
 .module::before{
   content:"";
   position:absolute;
-  left:150px;
+  left:-5px;
   top:6px;
-  bottom:-2px;
-  width:1px;
-  background:var(--line);
-}
-.module:last-child::before{display:none;}
-.module .time{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:13px;
-  color:var(--steel);
-  padding-top:4px;
-  text-align:right;
-  position:relative;
-}
-.module .time::after{
-  content:"";
-  position:absolute;
-  right:-33px;
-  top:8px;
   width:9px;
   height:9px;
   border-radius:50%;
   background:var(--steel);
   border:2px solid var(--paper);
 }
-.module .body{padding-left:28px;}
+.module:last-child{border-left-color:transparent;}
 .module h3{
   font-family:"Fraunces",serif;
   font-size:21px;
   font-weight:600;
-  margin:0 0 6px;
-}
-.module .dur{
-  display:inline-block;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:12px;
-  color:var(--grey);
-  margin-bottom:12px;
+  margin:0 0 10px;
 }
 .module p{margin:0 0 12px;color:var(--ink);}
 .module ul{margin:0 0 12px;padding-left:20px;}
 .module li{margin-bottom:6px;}
 
 .break-row{
-  grid-column:1/-1;
-  display:grid;
-  grid-template-columns:150px 1fr;
-  gap:0 28px;
-  padding-bottom:36px;
-}
-.break-row .time{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:13px;
-  color:var(--amber);
-  text-align:right;
-}
-.break-row .body{
-  padding-left:28px;
+  padding:2px 0 2px 26px;
+  margin:0 0 36px 4px;
   font-family:"IBM Plex Mono",monospace;
   font-size:13px;
   color:var(--amber);
   border-left:2px dashed var(--amber);
-  padding:2px 0 2px 26px;
 }
 
 /* ---------- callouts ---------- */
@@ -279,25 +225,6 @@ kbd{
   border-radius:5px;
   padding:2px 7px;
   color:var(--ink);
-}
-
-/* ---------- shortcut grid ---------- */
-.kbd-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:10px;
-  margin:16px 0;
-}
-.kbd-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  background:var(--paper-raised);
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:10px 12px;
-  font-size:13.5px;
 }
 
 /* ---------- vuln box ---------- */
@@ -382,22 +309,8 @@ kbd{
   background:var(--line);
   margin:56px 0 40px;
 }
-.legend{
-  display:flex;
-  gap:24px;
-  flex-wrap:wrap;
-  font-size:12.5px;
-  color:var(--grey);
-  font-family:"IBM Plex Mono",monospace;
-  margin-top:40px;
-}
-.legend b{color:var(--ink);}
 
 @media (max-width:640px){
-  .module,.break-row{grid-template-columns:1fr;}
-  .module::before{display:none;}
-  .module .time{text-align:left;padding-top:0;margin-bottom:4px;}
-  .module .body,.break-row .body{padding-left:0;border-left:none;}
   .cover{padding:48px 0 32px;}
 }
 </style>
@@ -426,16 +339,13 @@ kbd{
 
   <!-- ================= MODULE 1 ================= -->
   <div class="section-head">
-    <span class="tag">00:00–00:20</span>
     <h2>安裝與初次啟動</h2>
   </div>
   <div class="timeline">
 
     <div class="module">
-      <div class="time">00:00</div>
       <div class="body">
         <h3>下載與安裝</h3>
-        <span class="dur">約 15 分鐘</span>
         <p>前往官方網站下載對應作業系統版本（Windows / macOS）。強調：這是「編輯器」不是「作業系統」，也不是瀏覽器。</p>
         <ul>
           <li>Windows：下載 <code>.exe</code>，安裝時建議勾選「加入右鍵選單」「加入 PATH」</li>
@@ -450,10 +360,8 @@ kbd{
     </div>
 
     <div class="module">
-      <div class="time">00:15</div>
       <div class="body">
         <h3>初次啟動一覽</h3>
-        <span class="dur">約 5 分鐘</span>
         <p>開啟後先讓學員看一眼畫面即可，不深入解釋——語言暫時保持英文，介面認識與中文化留到後面模組再處理。先示範一次 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>（Mac 為 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>）開啟命令面板，讓學員有印象即可。</p>
       </div>
     </div>
@@ -462,16 +370,13 @@ kbd{
 
   <!-- ================= MODULE 2 ================= -->
   <div class="section-head">
-    <span class="tag">00:20–00:45</span>
     <h2>檔案與專案管理：實際打開文件</h2>
   </div>
   <div class="timeline">
 
     <div class="module">
-      <div class="time">00:20</div>
       <div class="body">
         <h3>「開啟資料夾」＝ VS Code 裡的「專案」</h3>
-        <span class="dur">約 10 分鐘</span>
         <p>這是本模組最重要的觀念：VS Code 沒有「新建專案」按鈕，一個資料夾就是一個專案。直接用學員自己的下載資料夾練習，比新建空資料夾更有感。</p>
         <ul>
           <li>File → Open Folder，選取「下載」資料夾（課程講義 PPT / 文件已預先放在裡面）</li>
@@ -481,10 +386,8 @@ kbd{
     </div>
 
     <div class="module">
-      <div class="time">00:30</div>
       <div class="body">
         <h3>用 Office 擴充套件直接在 VS Code 裡看 PPT / Word</h3>
-        <span class="dur">約 15 分鐘</span>
         <p>安裝 Office Viewer 類擴充套件（Extensions 面板搜尋安裝），在編輯區直接點開下載資料夾裡的 <code>.pptx</code> / <code>.docx</code> 檔案。</p>
         <ul>
           <li>點開課程講義 PPT，示範可以直接在分頁裡翻頁預覽，不需要另外開 PowerPoint</li>
@@ -499,10 +402,8 @@ kbd{
     </div>
 
     <div class="module">
-      <div class="time">00:40</div>
       <div class="body">
         <h3>建立、儲存檔案（小練習）</h3>
-        <span class="dur">約 5 分鐘</span>
         <ul>
           <li>右鍵 Explorer 空白處 → New File，練習新建一個空白 <code>.txt</code></li>
           <li>存檔快捷鍵 <kbd>Ctrl</kbd>+<kbd>S</kbd>；分頁上有圓點代表尚未儲存</li>
@@ -518,16 +419,13 @@ kbd{
 
   <!-- ================= MODULE 3 ================= -->
   <div class="section-head">
-    <span class="tag">00:45–01:05</span>
     <h2>換主題、換字型 —— 讓 VS Code 變成自己的樣子</h2>
   </div>
   <div class="timeline">
 
     <div class="module">
-      <div class="time">00:45</div>
       <div class="body">
         <h3>切換色彩主題</h3>
-        <span class="dur">約 10 分鐘</span>
         <ul>
           <li>命令面板 → <code>Preferences: Color Theme</code>，用方向鍵即時預覽並選定</li>
           <li>命令面板 → <code>Preferences: File Icon Theme</code> 切換檔案圖示風格</li>
@@ -541,10 +439,8 @@ kbd{
     </div>
 
     <div class="module">
-      <div class="time">00:55</div>
       <div class="body">
         <h3>調整字型大小與字體</h3>
-        <span class="dur">約 10 分鐘</span>
         <ul>
           <li>設定 → 搜尋 <code>font size</code> 調整編輯字型大小</li>
           <li>設定 → 搜尋 <code>font family</code> 調整字體</li>
@@ -557,16 +453,13 @@ kbd{
 
   <!-- ================= MODULE 4 ================= -->
   <div class="section-head">
-    <span class="tag">01:05–01:15</span>
     <h2>繁體中文化（可選）</h2>
   </div>
   <div class="timeline">
 
     <div class="module">
-      <div class="time">01:05</div>
       <div class="body">
         <h3>依個人習慣決定是否切換</h3>
-        <span class="dur">約 10 分鐘</span>
         <p>介面已經玩過一輪、也換好喜歡的顏色，現在請學員自行決定：習慣英文介面就跳過這一步，想要中文介面的人再一起做。</p>
         <ul>
           <li>命令面板輸入 <code>Configure Display Language</code></li>
@@ -583,16 +476,13 @@ kbd{
 
   <!-- ================= MODULE 5 ================= -->
   <div class="section-head">
-    <span class="tag">01:15–01:40</span>
     <h2>介面認識</h2>
   </div>
   <div class="timeline">
 
     <div class="module">
-      <div class="time">01:15</div>
       <div class="body">
         <h3>五大分區導覽</h3>
-        <span class="dur">約 15 分鐘</span>
         <p>前面幾個模組已經摸過 Explorer、命令面板、主題設定——現在正式把這些操作「掛回」對應的介面分區名稱，用「房間」比喻整個介面：</p>
         <ul>
           <li><b>Activity Bar（左側最窄那排圖示）</b>：切換不同功能面板的按鈕</li>
@@ -605,10 +495,8 @@ kbd{
     </div>
 
     <div class="module">
-      <div class="time">01:25</div>
       <div class="body">
         <h3>最上方選單列（File / Edit / View…）</h3>
-        <span class="dur">約 10 分鐘</span>
         <p>視窗最上方一整排文字（File、Edit、Selection、View、Go、Run…）是傳統選單，跟命令面板是<b>兩條通往同樣功能的路</b>——初學者常常忽略它，但它更適合「用滑鼠慢慢找」的習慣。</p>
         <ul>
           <li><b>File</b>：Open Folder、Save、Save As，就是剛才開下載資料夾的另一條路</li>
@@ -624,63 +512,17 @@ kbd{
 
   </div>
 
-  <div class="break-row">
-    <div class="time">01:40</div>
-    <div class="body">☕ 休息 10 分鐘</div>
-  </div>
-
-  <!-- ================= MODULE 6 ================= -->
-  <div class="section-head">
-    <span class="tag">01:50–02:15</span>
-    <h2>編輯技巧與快捷鍵</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="module">
-      <div class="time">01:50</div>
-      <div class="body">
-        <h3>多游標與搜尋取代</h3>
-        <span class="dur">約 12 分鐘</span>
-        <ul>
-          <li>按住 <kbd>Alt</kbd>（Mac <kbd>Option</kbd>）點擊多處，同時打字</li>
-          <li><kbd>Ctrl</kbd>+<kbd>D</kbd> 選取下一個相同的字詞，連續按可以多選</li>
-          <li><kbd>Ctrl</kbd>+<kbd>F</kbd> 尋找、<kbd>Ctrl</kbd>+<kbd>H</kbd> 取代；<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> 跨整個專案搜尋</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="module">
-      <div class="time">02:02</div>
-      <div class="body">
-        <h3>常用快捷鍵小抄</h3>
-        <span class="dur">約 13 分鐘</span>
-        <div class="kbd-grid">
-          <div class="kbd-row"><span>命令面板</span><span><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd></span></div>
-          <div class="kbd-row"><span>快速切換檔案</span><span><kbd>Ctrl</kbd>+<kbd>P</kbd></span></div>
-          <div class="kbd-row"><span>開啟／收起終端機</span><span><kbd>Ctrl</kbd>+<kbd>`</kbd></span></div>
-          <div class="kbd-row"><span>複製整行</span><span><kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>↓</kbd></span></div>
-          <div class="kbd-row"><span>剪下整行</span><span><kbd>Ctrl</kbd>+<kbd>X</kbd></span></div>
-          <div class="kbd-row"><span>單行註解</span><span><kbd>Ctrl</kbd>+<kbd>/</kbd></span></div>
-          <div class="kbd-row"><span>分割編輯器</span><span><kbd>Ctrl</kbd>+<kbd>\</kbd></span></div>
-          <div class="kbd-row"><span>格式化文件</span><span><kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd></span></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <div class="break-row">☕ 休息 10 分鐘</div>
 
   <!-- ================= MODULE 7 ================= -->
   <div class="section-head">
-    <span class="tag">02:15–02:25</span>
     <h2>擴充套件：安裝 Python</h2>
   </div>
   <div class="timeline">
 
     <div class="module">
-      <div class="time">02:15</div>
       <div class="body">
         <h3>安裝擴充套件</h3>
-        <span class="dur">約 10 分鐘</span>
         <p>主題、字型、（可選的）中文包已經在課程一開頭裝過了，這裡只需要補裝實作要用的 Python 套件。</p>
         <ul>
           <li>Activity Bar 中方塊圖示 → Extensions</li>
@@ -694,16 +536,13 @@ kbd{
 
   <!-- ================= MODULE 8 ================= -->
   <div class="section-head">
-    <span class="tag">02:25–02:45</span>
     <h2>終端機、寫一支程式執行、Git 基礎</h2>
   </div>
   <div class="timeline">
 
     <div class="module">
-      <div class="time">02:25</div>
       <div class="body">
         <h3>內建終端機</h3>
-        <span class="dur">約 6 分鐘</span>
         <p><kbd>Ctrl</kbd>+<kbd>`</kbd> 開啟整合終端機——它就是在目前資料夾底下開的一個命令列。</p>
         <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">python</span> --version
 <span class="kw">cd</span> Desktop/vscode-workshop
@@ -716,10 +555,8 @@ kbd{
     </div>
 
     <div class="module">
-      <div class="time">02:31</div>
       <div class="body">
         <h3>寫一支程式並執行</h3>
-        <span class="dur">約 8 分鐘</span>
         <p>讓學員第一次體驗「我寫的東西跑起來了」。程式要短到<b>每個人都能跟著打完</b>，而不是看老師打字。新建 <code>game.py</code>：</p>
         <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">import</span> random
 
@@ -743,10 +580,8 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
     </div>
 
     <div class="module">
-      <div class="time">02:39</div>
       <div class="body">
         <h3>Git 基礎操作</h3>
-        <span class="dur">約 6 分鐘</span>
         <ul>
           <li>終端機輸入 <code>git init</code> 初始化版本控制</li>
           <li>編輯檔案後，左側 Activity Bar 的「原始碼控制」圖示會出現變更數量</li>
@@ -763,7 +598,6 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
 
   <!-- ================= MODULE 9 ================= -->
   <div class="section-head">
-    <span class="tag">02:45–03:00</span>
     <h2>實作：做一張自己的個人名片網頁</h2>
   </div>
 
@@ -775,10 +609,8 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
   <div class="timeline">
 
     <div class="module">
-      <div class="time">02:45</div>
       <div class="body">
         <h3>下載模板，用 VS Code 打開</h3>
-        <span class="dur">約 4 分鐘</span>
         <ul>
           <li>點下方按鈕下載 <code>card-template.zip</code>，解壓縮到「下載」或「桌面」</li>
           <li>VS Code：<code>File → Open Folder</code>，打開剛解壓縮的資料夾——裡面有一個 <code>card-template.html</code></li>
@@ -795,10 +627,8 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
     </div>
 
     <div class="module">
-      <div class="time">02:49</div>
       <div class="body">
         <h3>先看一眼成品，再開始改</h3>
-        <span class="dur">約 1 分鐘</span>
         <p>Explorer 對 <code>card.html</code> 右鍵 → Reveal in File Explorer / Finder，用瀏覽器打開它。</p>
         <div class="callout">
           <span class="label">教學用意</span>
@@ -808,10 +638,8 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
     </div>
 
     <div class="module">
-      <div class="time">02:50</div>
       <div class="body">
         <h3>三個編輯技巧，一次用上</h3>
-        <span class="dur">約 8 分鐘</span>
         <ul>
           <li><b><kbd>Ctrl</kbd>+<kbd>D</kbd> 換名字（3 分鐘）</b>：游標點在任一個 <code>你的名字</code> 上，連按選起全部 3 處，直接打自己的名字。順手把 <code>.avatar</code> 裡的「名」改成自己姓名的第一個字。按過頭就 <kbd>Ctrl</kbd>+<kbd>U</kbd> 退回</li>
           <li><b><kbd>Alt</kbd>+點擊 改三個技能（2 分鐘）</b>：按住 <kbd>Alt</kbd>（Mac：<kbd>Option</kbd>）依序點在三個技能標籤上，三個游標同時打字</li>
@@ -829,10 +657,8 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
     </div>
 
     <div class="module">
-      <div class="time">02:58</div>
       <div class="body">
         <h3>填完欄位，回瀏覽器看成果</h3>
-        <span class="dur">約 2 分鐘</span>
         <p>自我介紹、身分、Email、城市直接打字改，<kbd>Ctrl</kbd>+<kbd>S</kbd> 存檔，切回瀏覽器按 <kbd>F5</kbd> 重新整理。</p>
         <div class="callout tip">
           <span class="label">帶學員做</span>
@@ -948,15 +774,10 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
     <li>能開啟資料夾，並用 Office 擴充套件直接瀏覽 PPT / Word 文件</li>
     <li>能切換喜歡的色彩主題與字型，依個人習慣決定是否切換為繁體中文</li>
     <li>能講出五大介面分區與選單列的用途，並用命令面板找到任何功能</li>
-    <li>能使用多游標與搜尋取代加速編輯</li>
     <li>能安裝擴充套件（Python）並開啟整合終端機執行基本指令</li>
     <li>能寫出一支簡單的 Python 程式並在終端機執行</li>
     <li>能新建 HTML 檔案、用多游標與搜尋取代完成一份自己的作品，並在瀏覽器打開它</li>
   </ul>
-
-  <div class="legend">
-    <span><b>時間</b> 為建議節奏，可依現場狀況彈性 ±5 分鐘調整</span>
-  </div>
 
 </div>
 
