@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你的名字 的個人名片</title>
+<style>
+  /* ========== 主題色：整份檔案裡 #3D5A80 共出現 5 次 ==========
+     用 Ctrl+H 一次全部換掉，就能改成自己喜歡的顏色。
+     可以試試看： #7C4B73 紫   #2F6B4F 綠   #B5532A 橘   #1E1E2E 墨黑 */
+  body{
+    margin:0; min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    background:#F7F6F3;
+    font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;
+    color:#1E1E2E;
+  }
+  .card{
+    width:min(92vw,420px); background:#fff; border-radius:18px; overflow:hidden;
+    box-shadow:0 18px 48px rgba(30,30,46,.14);
+  }
+  .top{ background:#3D5A80; padding:36px 28px 28px; text-align:center; color:#fff; }
+  .avatar{
+    width:88px; height:88px; margin:0 auto 14px; border-radius:50%;
+    background:#fff; color:#3D5A80;
+    font-size:40px; font-weight:700; line-height:88px;
+  }
+  .name{ margin:0; font-size:26px; font-weight:700; letter-spacing:1px; }
+  .role{ margin:6px 0 0; font-size:14px; opacity:.85; }
+  .body{ padding:26px 28px 30px; }
+  .about{ margin:0 0 22px; font-size:15px; line-height:1.9; color:#4A4A5A; }
+  .label{
+    font-size:12px; font-weight:700; letter-spacing:2px;
+    color:#3D5A80; margin:0 0 10px;
+  }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; }
+  .tag{
+    padding:6px 14px; border-radius:999px; font-size:13px;
+    background:rgba(61,90,128,.10); color:#3D5A80;
+  }
+  .contact{ font-size:14px; line-height:2; color:#4A4A5A; }
+  .contact b{ color:#1E1E2E; }
+  .foot{
+    padding:14px 28px 22px; text-align:center;
+    font-size:12px; color:#9A9AA8; border-top:1px solid #EEEDEA;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- ① 名字欄位：游標點在下面的名字上，連按 Ctrl+D 可以一次選起全部 3 個 -->
+  <div class="top">
+    <div class="avatar">名</div>   <!-- ② 換成自己姓名的第一個字 -->
+    <h1 class="name">你的名字</h1>
+    <p class="role">你的身分或一句話介紹</p>   <!-- ③ 例：行政人員 · 正在學寫程式 -->
+  </div>
+
+  <div class="body">
+    <!-- ④ 自我介紹，寫兩三句就好 -->
+    <p class="about">
+      這裡寫一段自我介紹。你可以介紹自己的工作、正在學的東西，
+      或是今天上完課最想記住的一件事。
+    </p>
+
+    <p class="label">我 會 的 事</p>
+    <!-- ⑤ 三行長得一模一樣：按住 Alt 依序點三下放三個游標，一次改完 -->
+    <div class="tags">
+      <span class="tag">技能一</span>
+      <span class="tag">技能二</span>
+      <span class="tag">技能三</span>
+    </div>
+
+    <p class="label">找 得 到 我</p>
+    <div class="contact">
+      <div><b>Email</b>　你的信箱</div>
+      <div><b>城市</b>　你在的城市</div>
+    </div>
+  </div>
+
+  <div class="foot">你的名字 · 2026 · 用 VS Code 親手做的</div>
+</div>
+
+</body>
+</html>

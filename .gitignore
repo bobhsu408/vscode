@@ -5,3 +5,6 @@ venv/
 .DS_Store
 .vscode/
 .env
+
+# 打包產物（由 site/build_zip.py 產生）
+site/content/card-template.zip

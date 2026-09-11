@@ -777,19 +777,19 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
     <div class="module">
       <div class="time">02:45</div>
       <div class="body">
-        <h3>建立檔案並貼上模板</h3>
+        <h3>下載模板，用 VS Code 打開</h3>
         <span class="dur">約 4 分鐘</span>
         <ul>
-          <li>Explorer 右鍵 → New File，檔名<b>整串連 <code>.html</code> 一起打</b>：<code>card.html</code></li>
-          <li>複製下方模板全文，<kbd>Ctrl</kbd>+<kbd>V</kbd> 貼上，<kbd>Ctrl</kbd>+<kbd>S</kbd> 存檔</li>
+          <li>點下方按鈕下載 <code>card-template.zip</code>，解壓縮到「下載」或「桌面」</li>
+          <li>VS Code：<code>File → Open Folder</code>，打開剛解壓縮的資料夾——裡面有一個 <code>card-template.html</code></li>
+          <li>把它<b>另存新檔</b>（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>）成 <code>card.html</code>，之後就改這一份</li>
         </ul>
-        <div class="callout warn">
-          <span class="label">常見誤解</span>
-          只打 <code>card</code> 會變成沒有副檔名的檔案，瀏覽器不認得。副檔名一定要自己打出來——這也是為什麼我們用手動新建，而不是提供下載。
-        </div>
+        <p style="margin:14px 0;">
+          <a href="/card-template.zip" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#3D5A80;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:14.5px;">⬇ 下載 card-template.zip</a>
+        </p>
         <div class="callout tip">
           <span class="label">帶學員做</span>
-          存檔後注意分頁的圓點消失了——這就是模組 2 講過的「已儲存」。
+          打開 <code>card.html</code> 後留意分頁沒有圓點——代表這是已經存好的檔案，可以直接開始改。
         </div>
       </div>
     </div>
@@ -846,12 +846,13 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
 
   <div class="callout warn" style="margin-top:22px;">
     <span class="label">排除狀況</span>
-    <b>中文亂碼</b>：確認模板的 <code>&lt;meta charset="utf-8"&gt;</code> 還在，狀態列右下角應顯示 UTF-8（回扣模組 5「狀態列＝儀表板」）。<b>瀏覽器不開 <code>file://</code></b>：把檔案拖進已開啟的瀏覽器視窗，或右鍵 Copy Path 貼到網址列。<b>改壞版面</b>：<kbd>Ctrl</kbd>+<kbd>Z</kbd> 可救，下方模板原文隨時可以重貼。
+    <b>中文亂碼</b>：確認模板的 <code>&lt;meta charset="utf-8"&gt;</code> 還在，狀態列右下角應顯示 UTF-8（回扣模組 5「狀態列＝儀表板」）。<b>瀏覽器不開 <code>file://</code></b>：把檔案拖進已開啟的瀏覽器視窗，或右鍵 Copy Path 貼到網址列。<b>改壞版面</b>：<kbd>Ctrl</kbd>+<kbd>Z</kbd> 可救，重新下載 zip 也能拿回原始檔。<b>zip 打不開 / 找不到下載</b>：直接看下方「模板原始碼」，整段選取複製貼上也可以。
   </div>
 
-  <h3 style="font-family:'Fraunces',serif;font-size:20px;margin:26px 0 10px;">名片模板原始碼</h3>
-  <p style="margin:0 0 12px;color:#4A4A5A;">請學員全選複製，貼進自己新建的 <code>card.html</code>。</p>
-  <div class="code" style="max-height:420px;overflow:auto;"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><pre style="margin:0;white-space:pre;">&lt;!DOCTYPE html&gt;
+  <details style="margin:26px 0 0;">
+    <summary style="cursor:pointer;font-family:'Fraunces',serif;font-size:18px;font-weight:600;">備用參考：名片模板原始碼（zip 打不開時用）</summary>
+    <p style="margin:10px 0 12px;color:#4A4A5A;font-size:14px;">正常流程請用上面的 zip 下載。這裡只是備援：整段選取複製，貼進自己新建的 <code>card.html</code>。</p>
+    <div class="code" style="max-height:420px;overflow:auto;"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><pre style="margin:0;white-space:pre;">&lt;!DOCTYPE html&gt;
 &lt;html lang="zh-Hant"&gt;
 &lt;head&gt;
 &lt;meta charset="utf-8"&gt;
@@ -937,6 +938,7 @@ answer = <span class="kw">int</span>(<span class="kw">input</span>(<span class="
 
 &lt;/body&gt;
 &lt;/html&gt;</pre></div>
+  </details>
 
   <div class="divider"></div>
 
