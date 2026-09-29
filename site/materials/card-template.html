@@ -24,6 +24,10 @@
     width:88px; height:88px; margin:0 auto 14px; border-radius:50%;
     background:#fff; color:#3D5A80;
     font-size:40px; font-weight:700; line-height:88px;
+    overflow:hidden;
+  }
+  .avatar img{
+    width:100%; height:100%; object-fit:cover; display:block;
   }
   .name{ margin:0; font-size:26px; font-weight:700; letter-spacing:1px; }
   .role{ margin:6px 0 0; font-size:14px; opacity:.85; }
@@ -52,7 +56,8 @@
 
   <!-- ① 名字欄位：游標點在下面的名字上，連按 Ctrl+D 可以一次選起全部 3 個 -->
   <div class="top">
-    <div class="avatar">名</div>   <!-- ② 換成自己姓名的第一個字 -->
+    <!-- ② 換成自己的照片：把照片檔放到跟這份 html 同一個資料夾，把下面的 avatar.svg 改成你的檔名（例如 avatar.jpg） -->
+    <div class="avatar"><img src="avatar.svg" alt="大頭照"></div>
     <h1 class="name">你的名字</h1>
     <p class="role">你的身分或一句話介紹</p>   <!-- ③ 例：行政人員 · 正在學寫程式 -->
   </div>
@@ -79,7 +84,7 @@
     </div>
   </div>
 
-  <div class="foot">你的名字 · 2026 · 用 VS Code 親手做的</div>
+  <div class="foot">你的名字 · 2026 · 用 Antigravity 親手做的</div>
 </div>
 
 </body>

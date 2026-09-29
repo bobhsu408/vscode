@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 產生「上課用ppt.pptx」—— 一個極簡 3 頁投影片，
-純粹讓學員在 VS Code 用 Office Viewer 類擴充套件打開來看。
+純粹讓學員在 Antigravity IDE 用 Office Viewer 類擴充套件打開來看。
 
 用法：  python3 build_sample_pptx.py
 """
@@ -60,14 +60,14 @@ slide(
         "這是一個示範用的 .pptx 檔。",
         "",
         "課堂上你會把它放進課程資料夾裡，",
-        "然後在 VS Code 裡直接打開來看 —— 不用另外開 PowerPoint。",
+        "然後在 Antigravity 裡直接打開來看 —— 不用另外開 PowerPoint。",
         "",
         "（如果打不開，記得先裝 Office Viewer 類擴充套件）",
     ],
 )
 
 slide(
-    "第 2 頁：VS Code 能做的事",
+    "第 2 頁：Antigravity 能做的事",
     [
         "• 寫程式、看程式碼（有顏色標示）",
         "• 一個資料夾就是一個專案",
@@ -82,7 +82,7 @@ slide(
     [
         "上完這堂課，你會：",
         "",
-        "• 自己裝好 VS Code、把它變成你喜歡的樣子",
+        "• 自己裝好 Antigravity IDE、把它變成你喜歡的樣子",
         "• 用 AI 幫你寫一個小遊戲，並在終端機跑起來",
         "• 做一張屬於自己的個人名片網頁",
     ],

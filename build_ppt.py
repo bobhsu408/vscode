@@ -103,14 +103,14 @@ def content_slide(tag, heading, bullets, note=None, note_color=STEEL, code=None)
 
 # 1. Cover
 title_slide(
-    "VS Code 入門三小時",
+    "Antigravity IDE 入門三小時",
     "從零安裝到能寫、能跑、能用終端機與 Git 的基本工作流。\n對象：有基礎電腦操作,未寫過程式。",
     "課程教案 · 逐時段講義"
 )
 
 # 2. Agenda
 content_slide("00:00 起", "今天的路線圖", [
-    "00:00–00:20  安裝與初次啟動",
+    "00:00–00:20  安裝、登入與初次啟動",
     "00:20–00:45  檔案與專案管理：打開下載資料夾與講義文件",
     "00:45–01:05  換主題、換字型",
     "01:05–01:15  繁體中文化（可選）",
@@ -123,12 +123,19 @@ content_slide("00:00 起", "今天的路線圖", [
 ])
 
 # 3. Install
-content_slide("00:00–00:15", "下載與安裝", [
-    "官網下載對應版本（Windows .exe / macOS .zip）",
+content_slide("00:00–00:10", "下載與安裝", [
+    "antigravity.google/download 下載對應版本（Windows .exe / macOS .dmg）",
     "強調：這是編輯器，不是瀏覽器",
     "Windows 安裝時勾選「加入右鍵選單」「加入 PATH」",
     "常見卡點：無系統管理員權限 → 使用者層級安裝版",
 ], note="現場提示：全程跟做，不要用投影帶過——這一步最容易個別卡住", note_color=STEEL)
+
+# 3b. Google login
+content_slide("00:10–00:15", "登入 Google 帳號", [
+    "第一次開啟要求「Continue with Google」登入",
+    "這是跟 VS Code 最大的不同：VS Code 不需要登入，Antigravity 免費版也要登入",
+    "建議用個人 Gmail 帳號；公司 Workspace 帳號較容易卡在驗證",
+], note="現場提示：跟安裝一樣容易個別卡住，登入失敗先換帳號重試，不卡全班", note_color=AMBER)
 
 # 4. First launch
 content_slide("00:15–00:20", "初次啟動一覽", [
@@ -138,8 +145,8 @@ content_slide("00:15–00:20", "初次啟動一覽", [
 ])
 
 # 5. Folder = Project
-content_slide("00:20–00:30", "「開啟資料夾」＝ VS Code 裡的專案", [
-    "VS Code 沒有「新建專案」按鈕",
+content_slide("00:20–00:30", "「開啟資料夾」＝ Antigravity 裡的專案", [
+    "Antigravity 沒有「新建專案」按鈕",
     "File → Open Folder，選取「下載」資料夾",
     "課程講義 PPT / 文件已預先透過課程網頁提供下載",
     "左側 Explorer 顯示該資料夾內容",
@@ -233,7 +240,7 @@ content_slide("02:25–02:31", "內建終端機", [
 ], note="常見卡點：Windows 上可能要打 py；macOS 上可能要打 python3。上課前務必實測學員機型", note_color=AMBER,
 code=[
     "python --version",
-    "cd Desktop/vscode-workshop",
+    "cd Desktop/antigravity-workshop",
     "dir   # macOS 用 ls",
 ])
 
@@ -282,12 +289,12 @@ content_slide("02:50–02:58", "三個編輯技巧，一次用上", [
 content_slide("02:58–03:00", "回瀏覽器看成果", [
     "填完自我介紹、身分、Email、城市，Ctrl+S 存檔",
     "切回瀏覽器按 F5——那是你自己的一頁",
-    "收尾：你不是學會寫網頁，是學會用 VS Code 快速改一份檔案",
+    "收尾：你不是學會寫網頁，是學會用 Antigravity 快速改一份檔案",
 ], note="鼓勵學員轉螢幕給旁邊的人看，比照換主題那段的分享節奏", note_color=STEEL)
 
 # 22. Checklist
 content_slide("課後", "自我檢查清單", [
-    "能獨立安裝 VS Code",
+    "能獨立安裝 Antigravity IDE，並用 Google 帳號登入",
     "能開啟資料夾，並用 Office 擴充套件直接瀏覽 PPT / Word 文件",
     "能切換喜歡的色彩主題與字型，依個人習慣決定是否切換為繁體中文",
     "能講出五大介面分區與選單列的用途，並用命令面板找到任何功能",

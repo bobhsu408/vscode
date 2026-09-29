@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>VS Code 入門三小時 · 講師教案（完整版）</title>
+<title>Antigravity IDE 入門三小時 · 講師教案（完整版）</title>
 <style>
 :root{
   --ink:#1e1e2e;
@@ -359,7 +359,7 @@ kbd{
 
   <div class="cover">
     <p class="eyebrow">講師教案（完整版）· 內部使用</p>
-    <h1>VS Code 入門三小時</h1>
+    <h1>Antigravity IDE 入門三小時</h1>
     <p class="sub">從零安裝到能寫、能跑、能用終端機與 Git，最後做一張自己的個人名片網頁。適合完全沒寫過程式的學員，全程以「先操作、再解釋」為主——安裝後先動手開檔案、換主題，累積成就感後才進入介面理論。</p>
     <div class="cover-meta">
       <span>時長<b>約 3 小時（含休息）</b></span>
@@ -370,7 +370,7 @@ kbd{
     <div class="dl">
       <a class="btn" href="/course-materials.zip">⬇ 下載課程資料夾 (.zip)</a>
       <p class="what">
-        解壓縮後用 VS Code「開啟資料夾」打開，今天全程就在這裡操作。內含：
+        解壓縮後用 Antigravity IDE「開啟資料夾」打開，今天全程就在這裡操作。內含：
         <code>課程PPT.pptx</code>、<code>練習.txt</code>、<code>上課用ppt.pptx</code>、
         名片模板 <code>card-template.html</code>、終端機小遊戲範例 <code>game.py</code>（及完整版 <code>game-extended.py</code>）。
       </p>
@@ -386,15 +386,30 @@ kbd{
     <div class="module">
       <div class="body">
         <h3>下載與安裝</h3>
-        <p>前往官方網站下載對應作業系統版本（Windows / macOS）。強調：這是「編輯器」不是「作業系統」，也不是瀏覽器。</p>
+        <p>前往 <code>antigravity.google/download</code> 下載對應作業系統版本（Windows / macOS）。強調：這是「編輯器」不是「作業系統」，也不是瀏覽器。</p>
         <ul>
           <li>Windows：下載 <code>.exe</code>，安裝時建議勾選「加入右鍵選單」「加入 PATH」</li>
-          <li>macOS：下載 <code>.zip</code>，解壓縮後拖入應用程式資料夾</li>
+          <li>macOS：下載 <code>.dmg</code>，把圖示拖入應用程式資料夾</li>
           <li>常見卡點：學校/公司電腦沒有系統管理員權限 → 使用者層級安裝版</li>
         </ul>
         <div class="callout tip">
           <span class="label">現場提示</span>
           安裝過程請學員全程跟做，不要用投影帶過——這一步最容易個別卡住，寧可多留時間巡場。
+        </div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="body">
+        <h3>登入 Google 帳號</h3>
+        <p>第一次開啟會要求「Continue with Google」登入——<b>這是跟 VS Code 最大的不同</b>，VS Code 完全不需要登入，Antigravity 連免費版也要有 Google 帳號才能使用。</p>
+        <ul>
+          <li>建議用個人 Gmail 帳號登入；公司 Google Workspace 帳號比較容易卡在驗證流程</li>
+          <li>登入完成後會自動初始化，需要下載一些元件，約 2–3 分鐘</li>
+        </ul>
+        <div class="callout warn">
+          <span class="label">現場提示</span>
+          跟安裝一樣容易個別卡住——登入失敗的人先換帳號重試，還是不行就先跟著旁邊同學的畫面看，下課再個別處理，不要卡住全班進度。
         </div>
       </div>
     </div>
@@ -416,8 +431,8 @@ kbd{
 
     <div class="module">
       <div class="body">
-        <h3>「開啟資料夾」＝ VS Code 裡的「專案」</h3>
-        <p>這是本模組最重要的觀念：VS Code 沒有「新建專案」按鈕，一個資料夾就是一個專案。直接用學員自己的下載資料夾練習，比新建空資料夾更有感。</p>
+        <h3>「開啟資料夾」＝ Antigravity 裡的「專案」</h3>
+        <p>這是本模組最重要的觀念：Antigravity 沒有「新建專案」按鈕，一個資料夾就是一個專案。直接用學員自己的下載資料夾練習，比新建空資料夾更有感。</p>
         <ul>
           <li>File → Open Folder，選取「下載」資料夾（課程講義 PPT / 文件已預先放在裡面）</li>
           <li>左側 Explorer 會顯示該資料夾內容——第一次看到「一堆檔案變成可操作的樹狀清單」</li>
@@ -427,16 +442,16 @@ kbd{
 
     <div class="module">
       <div class="body">
-        <h3>用 Office 擴充套件直接在 VS Code 裡看 PPT / Word</h3>
-        <p>安裝 Office Viewer 類擴充套件（Extensions 面板搜尋安裝），在編輯區直接點開下載資料夾裡的 <code>.pptx</code> / <code>.docx</code> 檔案。</p>
+        <h3>用 Office 擴充套件直接在 Antigravity 裡看 PPT / Word</h3>
+        <p>安裝 Office Viewer 類擴充套件（Extensions 面板搜尋安裝，套件庫是 OpenVSX），在編輯區直接點開下載資料夾裡的 <code>.pptx</code> / <code>.docx</code> 檔案。</p>
         <ul>
           <li>點開課程講義 PPT，示範可以直接在分頁裡翻頁預覽，不需要另外開 PowerPoint</li>
           <li>順便示範開啟一個 <code>.docx</code> 講義文件比對</li>
-          <li>體會 VS Code 不只能寫程式，也能當「輕量文件檢視器」使用</li>
+          <li>體會 Antigravity 不只能寫程式，也能當「輕量文件檢視器」使用</li>
         </ul>
         <div class="callout tip">
           <span class="label">帶學員做</span>
-          請每個人自己在下載資料夾裡找到今天的講義檔案並點開看一次，建立「VS Code 也能看我平常的檔案」的直覺。
+          請每個人自己在下載資料夾裡找到今天的講義檔案並點開看一次，建立「Antigravity 也能看我平常的檔案」的直覺。
         </div>
       </div>
     </div>
@@ -450,7 +465,7 @@ kbd{
         </ul>
         <div class="callout warn">
           <span class="label">常見誤解</span>
-          很多初學者以為要「儲存專案」，其實 VS Code 沒有專案檔——存的永遠是個別檔案，資料夾只是視窗顯示範圍。
+          很多初學者以為要「儲存專案」，其實 Antigravity 沒有專案檔——存的永遠是個別檔案，資料夾只是視窗顯示範圍。
         </div>
       </div>
     </div>
@@ -459,7 +474,7 @@ kbd{
 
   <!-- ================= MODULE 3 ================= -->
   <div class="section-head">
-    <h2>個性化：換主題 —— 讓 VS Code 變成自己的樣子</h2>
+    <h2>個性化：換主題 —— 讓 Antigravity 變成自己的樣子</h2>
   </div>
   <div class="timeline">
 
@@ -492,7 +507,7 @@ kbd{
         <p>介面已經玩過一輪、也換好喜歡的顏色，現在請學員自行決定：習慣英文介面就跳過這一步，想要中文介面的人再一起做。</p>
         <ul>
           <li>命令面板輸入 <code>Configure Display Language</code></li>
-          <li>安裝 <code>Chinese (Traditional) Language Pack</code>，重新啟動生效</li>
+          <li>安裝 <code>Chinese (Traditional) Language Pack</code>，重新啟動生效（跟 VS Code 是同一套語言包機制，操作完全相同）</li>
         </ul>
         <div class="callout">
           <span class="label">教學用意</span>
@@ -574,7 +589,7 @@ kbd{
         <h3>內建終端機</h3>
         <p><kbd>Ctrl</kbd>+<kbd>`</kbd> 開啟整合終端機——它就是在目前資料夾底下開的一個命令列。</p>
         <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div><span class="kw">python</span> --version
-<span class="kw">cd</span> Desktop/vscode-workshop
+<span class="kw">cd</span> Desktop/antigravity-workshop
 <span class="kw">dir</span>  <span class="cm"># macOS 用 ls</span></div>
         <div class="callout warn">
           <span class="label">常見卡點</span>
@@ -590,7 +605,7 @@ kbd{
         <div class="code"><div class="chrome"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div>請幫我寫一個國小數學的問答挑戰 Python 檔，
 可以在終端機畫面做答題</div>
         <ul>
-          <li>在 VS Code 新建 <code>game.py</code>，把 AI 給的程式碼整段複製貼上、存檔</li>
+          <li>在 Antigravity 新建 <code>game.py</code>，把 AI 給的程式碼整段複製貼上、存檔</li>
           <li>點右上角的三角形（▶ Run Python File），或終端機輸入 <code>python game.py</code>（打不動就換 <code>py</code> / <code>python3</code>）</li>
           <li>終端機開始出題，就在終端機裡輸入答案、按 Enter</li>
           <li>想暫停：點一下終端機，按 <kbd>Ctrl</kbd>+<kbd>C</kbd></li>
@@ -609,10 +624,10 @@ kbd{
     <div class="module">
       <div class="body">
         <h3>Git 基礎操作</h3>
-        <p>VS Code 左側的「原始碼控制」面板只是一層介面，背後實際執行指令的是電腦上另外安裝的 <b>Git</b> 本身——VS Code 不會內建它。</p>
+        <p>Antigravity 左側的「原始碼控制」面板只是一層介面，背後實際執行指令的是電腦上另外安裝的 <b>Git</b> 本身——Antigravity 不會內建它。</p>
         <ul>
           <li>終端機輸入 <code>git --version</code> 確認有沒有裝：有版本號（例如 <code>git version 2.43.0</code>）就代表已經裝好，可以跳過下面的安裝</li>
-          <li>沒反應或跳出「找不到指令」：前往 <code>git-scm.com</code> 下載安裝（Windows / macOS 皆有），裝完<b>重新啟動 VS Code</b>，左側原始碼控制圖示才會恢復正常</li>
+          <li>沒反應或跳出「找不到指令」：前往 <code>git-scm.com</code> 下載安裝（Windows / macOS 皆有），裝完<b>重新啟動 Antigravity</b>，左側原始碼控制圖示才會恢復正常</li>
         </ul>
         <div class="callout warn">
           <span class="label">常見卡點</span>
@@ -649,7 +664,7 @@ kbd{
         <h3>找到模板，用瀏覽器打開它</h3>
         <ul>
           <li>回到一開始打開的課程資料夾，裡面有一個 <code>card-template.html</code></li>
-          <li>在 VS Code 的 Explorer 對 <code>card-template.html</code> 右鍵 → <code>Copy Path</code></li>
+          <li>在 Antigravity 的 Explorer 對 <code>card-template.html</code> 右鍵 → <code>Copy Path</code></li>
           <li>打開 Chrome，把剛複製的路徑貼到網址列，按 Enter</li>
         </ul>
         <div class="callout tip">
@@ -663,7 +678,8 @@ kbd{
       <div class="body">
         <h3>三個編輯技巧，一次用上</h3>
         <ul>
-          <li><b><kbd>Ctrl</kbd>+<kbd>D</kbd> 換名字（3 分鐘）</b>：游標點在任一個 <code>你的名字</code> 上，連按選起全部 3 處，直接打自己的名字。順手把 <code>.avatar</code> 裡的「名」改成自己姓名的第一個字。按過頭就 <kbd>Ctrl</kbd>+<kbd>U</kbd> 退回</li>
+          <li><b><kbd>Ctrl</kbd>+<kbd>D</kbd> 換名字（3 分鐘）</b>：游標點在任一個 <code>你的名字</code> 上，連按選起全部 3 處，直接打自己的名字。按過頭就 <kbd>Ctrl</kbd>+<kbd>U</kbd> 退回</li>
+          <li><b>換大頭照（選做，2 分鐘）</b>：把自己的照片檔放進跟 <code>card.html</code> 同一個資料夾，把 <code>&lt;img src="avatar.svg"&gt;</code> 的檔名改成自己的照片檔名（例如 <code>avatar.jpg</code>）</li>
           <li><b><kbd>Alt</kbd>+點擊 改三個技能（2 分鐘）</b>：按住 <kbd>Alt</kbd>（Mac：<kbd>Option</kbd>）依序點在三個技能標籤上，三個游標同時打字</li>
           <li><b><kbd>Ctrl</kbd>+<kbd>H</kbd> 換主題色（3 分鐘）</b>：找 <code>#3D5A80</code>（<b>連 <code>#</code> 一起輸入</b>），確認「找到 5 筆」後全部取代。模板註解裡有四組建議色</li>
         </ul>
@@ -673,7 +689,7 @@ kbd{
         </div>
         <div class="callout tip">
           <span class="label">帶教技巧</span>
-          換色這步呼應前面「個性化：換主題」模組——「剛才你換的是 VS Code 的顏色，現在換的是自己作品的顏色。」
+          換色這步呼應前面「個性化：換主題」模組——「剛才你換的是 Antigravity 的顏色，現在換的是自己作品的顏色。」
         </div>
       </div>
     </div>
@@ -686,7 +702,7 @@ kbd{
           <span class="label">帶學員做</span>
           鼓勵學員轉螢幕給旁邊的人看，比照換主題那段的分享節奏。
         </div>
-        <p style="margin-top:14px;"><b>收尾一句話</b>：你剛剛不是「學會寫網頁」，是學會了用 VS Code 快速改一份檔案——這件事對任何檔案都適用。</p>
+        <p style="margin-top:14px;"><b>收尾一句話</b>：你剛剛不是「學會寫網頁」，是學會了用 Antigravity 快速改一份檔案——這件事對任何檔案都適用。</p>
       </div>
     </div>
 
@@ -726,6 +742,10 @@ kbd{
     width:88px; height:88px; margin:0 auto 14px; border-radius:50%;
     background:#fff; color:#3D5A80;
     font-size:40px; font-weight:700; line-height:88px;
+    overflow:hidden;
+  }
+  .avatar img{
+    width:100%; height:100%; object-fit:cover; display:block;
   }
   .name{ margin:0; font-size:26px; font-weight:700; letter-spacing:1px; }
   .role{ margin:6px 0 0; font-size:14px; opacity:.85; }
@@ -754,7 +774,8 @@ kbd{
 
   &lt;!-- ① 名字欄位：游標點在下面的名字上，連按 Ctrl+D 可以一次選起全部 3 個 --&gt;
   &lt;div class="top"&gt;
-    &lt;div class="avatar"&gt;名&lt;/div&gt;   &lt;!-- ② 換成自己姓名的第一個字 --&gt;
+    &lt;!-- ② 換成自己的照片：把照片檔放到跟這份 html 同一個資料夾，改下面的檔名 --&gt;
+    &lt;div class="avatar"&gt;&lt;img src="avatar.jpg" alt="大頭照"&gt;&lt;/div&gt;
     &lt;h1 class="name"&gt;你的名字&lt;/h1&gt;
     &lt;p class="role"&gt;你的身分或一句話介紹&lt;/p&gt;   &lt;!-- ③ 例：行政人員 · 正在學寫程式 --&gt;
   &lt;/div&gt;
@@ -781,7 +802,7 @@ kbd{
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;div class="foot"&gt;你的名字 · 2026 · 用 VS Code 親手做的&lt;/div&gt;
+  &lt;div class="foot"&gt;你的名字 · 2026 · 用 Antigravity 親手做的&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/body&gt;
@@ -792,7 +813,7 @@ kbd{
 
   <h2 style="font-family:'Fraunces',serif;font-size:24px;margin:0 0 16px;">課後自我檢查清單</h2>
   <ul class="checklist">
-    <li>能獨立安裝 VS Code</li>
+    <li>能獨立安裝 Antigravity IDE，並用 Google 帳號登入</li>
     <li>能開啟資料夾，並用 Office 擴充套件直接瀏覽 PPT / Word 文件</li>
     <li>能切換喜歡的色彩主題與字型，依個人習慣決定是否切換為繁體中文</li>
     <li>能講出五大介面分區與選單列的用途，並用命令面板找到任何功能</li>
@@ -800,6 +821,15 @@ kbd{
     <li>能寫出一支簡單的 Python 程式並在終端機執行</li>
     <li>能新建 HTML 檔案、用多游標與搜尋取代完成一份自己的作品，並在瀏覽器打開它</li>
   </ul>
+
+  <div class="divider"></div>
+
+  <h2 style="font-family:'Fraunces',serif;font-size:24px;margin:0 0 16px;">延伸閱讀</h2>
+  <div class="callout" style="margin:0;">
+    <span class="label">呼應 P.59</span>
+    <a href="https://github.com/johnlui/WaitDex" target="_blank" rel="noopener" style="color:var(--steel);">WaitDex</a>
+    ——關於 AI 幫你做事的時候，人還要做什麼，適合當今天課程的延伸閱讀。
+  </div>
 
 </div>
 

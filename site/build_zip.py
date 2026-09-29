@@ -21,7 +21,7 @@ SITE = Path(__file__).parent
 MATERIALS = SITE / "materials"
 OUT = SITE / "content" / "course-materials.zip"
 
-ARCHIVE_ROOT = "vscode-course-materials"
+ARCHIVE_ROOT = "antigravity-course-materials"
 
 # 產生器腳本本身，不是課程素材
 EXCLUDE = {"build_sample_pptx.py"}
